@@ -34,10 +34,7 @@ const Banner = () => {
                     <img src={img4} />
                     
                 </div>
-                <div>
-                    <img src={img4} />
-                    
-                </div>
+                
                 <div>
                     <img src={img5} />
                     
