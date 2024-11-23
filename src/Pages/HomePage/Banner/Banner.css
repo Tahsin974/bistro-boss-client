@@ -1,0 +1,8 @@
+.thumbs-wrapper{
+    justify-items: center !important;
+}
+.carousel .control-dots .dot.selected, .carousel .control-dots .dot:hover{
+    background-color: #007AFF !important;
+    border-color: #007AFF !important;
+    
+}
