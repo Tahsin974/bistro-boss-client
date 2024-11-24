@@ -11,7 +11,7 @@ import './Banner.css'
 
 const Banner = () => {
     return (
-        <div>
+        <section>
             <Carousel
             autoPlay
             infiniteLoop
@@ -45,7 +45,7 @@ const Banner = () => {
                 </div>
                 
             </Carousel>
-        </div>
+        </section>
     );
 };
 
