@@ -31,7 +31,7 @@ const Menubar = () => {
           </NavbarItem>
           <DropdownMenu
            
-            className="max-w-48 bg-black bg-opacity-40 text-white rounded-md"
+            className="max-w-48 bg-black mt-3 bg-opacity-85 text-white rounded-md"
             
           >
             <DropdownItem>
@@ -103,8 +103,6 @@ const Menubar = () => {
             <Link to='/login'>
             <button className="btn lg:btn-md md:btn-sm btn-xs btn-outline border-orange-500 text-orange-500 hover:bg-orange-500 hover:border-orange-500 hover:text-white rounded-none">Login</button>
             </Link>
-            
-            
           </NavbarItem>
           
         </NavbarContent>
