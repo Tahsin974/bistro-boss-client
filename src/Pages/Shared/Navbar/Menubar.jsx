@@ -73,7 +73,7 @@ const Menubar = () => {
   );
   return (
     <div className="sticky top-0 z-10 bg-neutral-800">
-      <Navbar onMenuOpenChange={setIsMenuOpen} className="items-center lg:fixed lg:z-10 md:fixed md:z-10  lg:bg-opacity-65 lg:bg-black md:bg-opacity-65 md:bg-black  text-white max-w-[1200px] mx-auto "
+      <Navbar onMenuOpenChange={setIsMenuOpen} className="items-center lg:fixed lg:z-10 md:fixed md:z-10  lg:bg-opacity-40 lg:bg-black md:bg-opacity-40 md:bg-black  text-white max-w-[1200px] mx-auto "
       
       >
         <NavbarContent>
