@@ -3,7 +3,7 @@ const About = () => {
   return (
     <section className="my-28">
       <div
-        className="hero min-h-screen"
+        className="hero min-h-screen bg-fixed"
         style={{
           backgroundImage:
             `url(${img})`,

@@ -9,7 +9,6 @@ const ChefRecommands = () => {
         axios.get('./menu.json')
         .then(res => {
             const soupItems = res.data.filter(soupItem => soupItem.category === 'soup');
-            console.log(soupItems)
             setMenu(soupItems);
         })
     },[])

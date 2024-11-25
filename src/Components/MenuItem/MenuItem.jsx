@@ -8,10 +8,11 @@ const MenuItem = ({item}) => {
                 borderRadius:'0px 200px 200px 200px'
             }} className="w-[118px] h-[101px]" src={image} alt="" />
             <div>
-                <h4 className="uppercase cormorant-garamond-medium">{name}------------------</h4>
+                <h4 className="uppercase cormorant-garamond-medium">{name}</h4>
                 <p>{recipe}</p>
+                <p className="text-yellow-600 text-xl font-semibold">${price}</p>
             </div>
-            <p className="text-yellow-600">${price}</p>
+            
             
         </div>
     );
