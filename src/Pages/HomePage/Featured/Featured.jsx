@@ -3,7 +3,7 @@ import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
 const Featured = () => {
   return (
     <section
-      className="hero min-h-screen bg-fixed my-28 text-white"
+      className="hero min-h-screen bg-fixed my-28 "
       style={{
         backgroundImage:
           `url(${fearturedImg})`,
@@ -14,7 +14,7 @@ const Featured = () => {
       
       </div>
       
-      <div className="hero-content text-neutral-content ">
+      <div className="hero-content text-white ">
         
         <div className="max-w-4xl space-y-10">
         <SectionTitle
