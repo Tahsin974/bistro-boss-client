@@ -53,19 +53,19 @@ const Menubar = () => {
   const navOptions = (
     <>
       <NavbarItem>
-        <Link to='/' className="text-white">HOME</Link>
+        <Link to='/' className="text-white font-light hover:text-orange-500">HOME</Link>
       </NavbarItem>
       <NavbarItem>
-        <Link to='/contact' className="text-white">CONTACT US</Link>
+        <Link to='/contact' className="text-white font-light hover:text-orange-500">CONTACT US</Link>
       </NavbarItem>
       <NavbarItem>
-        <Link className="text-white">DASHBOARD</Link>
+        <Link className="text-white font-light hover:text-orange-500">DASHBOARD</Link>
       </NavbarItem>
       <NavbarItem>
-        <Link to='/menu' className="text-white">OUR MENU</Link>
+        <Link to='/menu' className="text-white font-light hover:text-orange-500">OUR MENU</Link>
       </NavbarItem>
       <NavbarItem>
-        <Link to="/shop" className="text-white">OUR SHOP</Link>
+        <Link to="/order" className="text-white font-light hover:text-orange-500">ORDER FOOD</Link>
       </NavbarItem>
       
       
@@ -83,9 +83,9 @@ const Menubar = () => {
           />
           <NavbarBrand>
             <p className="   text-white  lg:text-lg text-md">
-              <span className="font-sans font-bold">BISTRO BOSS</span>
+              <span className="cinzel-bold">BISTRO BOSS</span>
               <br />
-              <span className="font-extralight
+              <span className="cinzel-light
 ">RESTUARANT</span>
             </p>
             

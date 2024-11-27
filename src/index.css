@@ -3,6 +3,32 @@
 @tailwind utilities;
 
 /* google fonts */
+
+.cinzel-light {
+  font-family: "Cinzel", serif;
+  font-optical-sizing: auto;
+  font-weight:300;
+  font-style: normal;
+}
+.cinzel-medium {
+  font-family: "Cinzel", serif;
+  font-optical-sizing: auto;
+  font-weight:500;
+  font-style: normal;
+}
+.cinzel-semibold {
+  font-family: "Cinzel", serif;
+  font-optical-sizing: auto;
+  font-weight:600;
+  font-style: normal;
+}
+.cinzel-bold {
+  font-family: "Cinzel", serif;
+  font-optical-sizing: auto;
+  font-weight:700;
+  font-style: normal;
+}
+
 .cormorant-garamond-light {
   font-family: "Cormorant Garamond", serif;
   font-weight: 300;

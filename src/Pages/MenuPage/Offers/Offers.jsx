@@ -1,8 +1,8 @@
+import MenuCategories from "../../../Components/MenuCategories/MenuCategories";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import useMenu from "../../../Hooks/useMenu";
-import MenuCategories from "../../../Components/MenuCategories/MenuCategories";
 
-const PopularItems = () => {
+const Offers = () => {
     const [menu,loading] = useMenu();
     if(loading){
         return <>
@@ -12,24 +12,21 @@ const PopularItems = () => {
         </div>
         </>
     }
-    const popularItems = menu.filter(popularItem => popularItem.category === 'popular')
+    const offeredItems = menu.filter(item => item.category === 'offered')
     
     return (
         <section className="my-28 space-y-10 ">
             <SectionTitle
-            subHeading='Popular Items'
-            Heading='FROM OUR MENU'
-            ></SectionTitle>
+            Heading={"TODAY'S OFFER"}
+            subHeading={"Don't miss"}
+            >
+            </SectionTitle>
             <MenuCategories
-            items={popularItems}
-            buttonValue={'view full menu'}
+            items={offeredItems}
+            buttonValue={'ORDER YOUR FAVOURITE FOOD'}
             ></MenuCategories>
-           
-            
-        
-            
         </section>
     );
 };
 
-export default PopularItems;
+export default Offers;

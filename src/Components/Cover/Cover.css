@@ -1,0 +1,91 @@
+.content-size{
+    width: 1000px;
+    padding-inline: 112px;
+    padding-block: 100px;
+    
+}
+h1{
+    font-size: 60px;
+    line-height: 36px;
+}
+h4{
+    font-size: 25px;
+    line-height: 20px;
+}
+
+@media only screen and (max-width:999px) and (min-width:800px){
+    .content-size{
+        width: 800px;
+        padding-inline: 80px;
+        padding-block: 70px;
+    }
+    h1{
+        font-size: 45px;
+        line-height: 30px;
+    }
+    h4{
+        font-size: 20px;
+        line-height: 15px;
+    }
+}
+
+@media only screen and (max-width:799px) and (min-width:600px){
+    .content-size{
+        width: 600px;
+        padding-inline: 50px;
+        padding-block: 40px;
+    }
+    h1{
+        font-size: 40px;
+        line-height: 30px;
+    }
+    h4{
+        font-size: 15px;
+        line-height: 10px;
+    }
+}
+@media only screen and (max-width:599px) and (min-width:400px){
+    .content-size{
+        width: 400px;
+        padding-inline: 30px;
+        padding-block: 20px;
+    }
+    h1{
+        font-size: 30px;
+        line-height: 25px;
+    }
+    h4{
+        font-size: 15px;
+        line-height: 10px;
+    }
+}
+@media only screen and (max-width:399px) and (min-width:300px){
+    .content-size{
+        width: 300px;
+        padding-inline: 10px;
+        padding-block: 5px;
+    }
+    h1{
+        font-size: 20px;
+        line-height: 20px;
+    }
+    h4{
+        font-size: 10px;
+        line-height: 5px;
+    }
+}
+@media only screen and (max-width:299px) and (min-width:275px){
+    .content-size{
+        width: 250px;
+        padding-inline: 10px;
+        padding-block: 2px;
+    }
+    h1{
+        font-size: 15px;
+        line-height: 15px;
+    }
+    h4{
+        font-size: 7px;
+        line-height: 2px;
+    }
+}

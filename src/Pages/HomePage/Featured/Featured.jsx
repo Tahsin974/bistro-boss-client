@@ -1,4 +1,5 @@
 import fearturedImg from '../../../assets/home/featured.jpg'
+import Button from '../../../Components/Button/Button';
 import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
 const Featured = () => {
   return (
@@ -25,11 +26,13 @@ const Featured = () => {
           <img src={fearturedImg}  />
           <div>
             <h3 className='text-xl'>March 20, 2023</h3>
-            <h2 className='text-2xl'>WHERE CAN I GET SOME?</h2>
-          <p className="mb-5">
+            <h2 className='text-2xl font-semibold'>WHERE CAN I GET SOME?</h2>
+          <p className="mb-5 font-light">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, animi! Quae hic laudantium, animi assumenda odit ratione qui id, voluptates repudiandae obcaecati officiis. Sapiente explicabo nam qui voluptates esse eligendi.
           </p>
-          <button className="btn btn-outline border-0 border-b-2 border-b-white text-white uppercase">Read More</button>
+          <Button
+          color='white'
+          >Read More</Button>
           </div>
           </div>
         </div>
