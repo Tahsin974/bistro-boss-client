@@ -7,6 +7,7 @@ const FoodTab = ({items}) => {
                 items.map(item => <ItemCard
                 key={item._id}
                 item={item}
+                isPrice={true}
                 ></ItemCard>)
                 }
             </div>

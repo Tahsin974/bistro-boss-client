@@ -1,5 +1,5 @@
-const ItemCard = ({ item }) => {
-  const { name, image, recipe } = item;
+const ItemCard = ({ item,isPrice }) => {
+  const { name, image, recipe,price } = item;
   return (
     <div>
       <div className="card bg-[#F3F3F3] text-black border rounded-none shadow-xl">
@@ -10,6 +10,8 @@ const ItemCard = ({ item }) => {
             className="w-full"
             
           />
+          {isPrice && <p className="bg-neutral-900 text-white absolute px-3 py-2 font-semibold top-2 right-2 ">${price}</p>}
+          
         </figure>
         <div className="card-body items-center text-center">
           <h2 className="card-title font-semibold">{name}</h2>

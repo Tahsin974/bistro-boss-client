@@ -1,10 +1,31 @@
-
-.react-tabs__tab--selected {
-    border: 0px !important;
-
-    border-radius: 0% !important;
-    background-color: rgb(48, 48, 48) !important;
-    color: #d89a0b !important;
-    
+.MuiTab-root.Mui-selected{
+    color: #ca8a04 !important;
     
 }
+.MuiTab-root{
+ 
+    font-weight: 600 !important;
+}
+.css-1qltlow-MuiTabs-indicator{
+    background-color: #ca8a04 !important;
+}
+
+@media only  screen and (max-width:500px){
+    
+.MuiTabs-flexContainer{
+    display: grid !important;
+    grid-template-columns: repeat(3 , 1fr) !important;
+    justify-items: center !important;
+    text-align: center !important;
+
+}
+.css-1qltlow-MuiTabs-indicator{
+    display: none;
+}
+.MuiTab-root.Mui-selected{
+    border-bottom: 2px solid #ca8a04 !important;
+}
+}
+/* 
+MuiTabs-indicator css-1qltlow-MuiTabs-indicator
+*/
