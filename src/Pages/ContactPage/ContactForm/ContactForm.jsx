@@ -59,7 +59,7 @@ const ContactForm = () => {
           </div>
           </div>
           <div className="form-control mt-6 mx-auto ">
-            <button className="btn bg-gradient-to-r from-[#835D23] to-[#B58130] rounded-none text-white">Send Message
+            <button className="btn bg-gradient-to-r from-[#835D23] to-[#B58130] rounded-none text-white border-0">Send Message
             <BsFillSendFill />
 
             </button>

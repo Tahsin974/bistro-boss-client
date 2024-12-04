@@ -33,7 +33,7 @@ const SignUp = () => {
                 <input
                   type="text"
                   placeholder="Enter Your Name"
-                  className="input input-bordered"
+                  className="input input-bordered  bg-white text-black"
                   required
                 />
               </div>
@@ -44,7 +44,7 @@ const SignUp = () => {
                 <input
                   type="email"
                   placeholder="Enter Your Email"
-                  className="input input-bordered"
+                  className="input input-bordered  bg-white text-black"
                   required
                 />
               </div>
@@ -55,26 +55,26 @@ const SignUp = () => {
                 <input
                   type="password"
                   placeholder="Enter Your Password"
-                  className="input input-bordered"
+                  className="input input-bordered  bg-white text-black"
                   required
                 />
               </div>
               <div className="form-control my-6 ">
-                <button className="btn bg-[#D1A054] hover:bg-[#b88e4f] text-white">Sign Up</button>
+                <button className="btn bg-[#D1A054] hover:bg-[#b88e4f] text-white border-0">Sign Up</button>
               </div>
               <div className="text-center">
               <Link to='/login'className="text-[#D1A054]  " >Already registered? Go to log in</Link>
               <div className="divider divider-horizontal mx-auto">Or sign up with </div>
               <div className="space-x-4">
-              <button className="btn btn-circle btn-outline text-xl">
+              <button className="btn btn-circle btn-outline text-xl  text-black border-black">
               <FaFacebookF />
 
               </button>
-              <button className="btn btn-circle btn-outline text-xl">
+              <button className="btn btn-circle btn-outline text-xl text-black border-black">
               <FaGoogle />
 
               </button>
-              <button className="btn btn-circle btn-outline text-xl">
+              <button className="btn btn-circle btn-outline text-xl text-black border-black">
               <FaGithub />
 
               </button>

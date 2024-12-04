@@ -32,7 +32,7 @@ const Login = () => {
                 <input
                   type="email"
                   placeholder="Enter Your Email"
-                  className="input input-bordered"
+                  className="input input-bordered  bg-white text-black"
                   required
                 />
               </div>
@@ -43,14 +43,14 @@ const Login = () => {
                 <input
                   type="password"
                   placeholder="Enter Your Password"
-                  className="input input-bordered"
+                  className="input input-bordered  bg-white text-black"
                   required
                 />
               </div>
               <div className="form-control mt-3">
                 <input
                   type="text"
-                  className="input input-bordered"
+                  className="input input-bordered  bg-white text-black"
                   required
                 />
               </div>
@@ -63,27 +63,27 @@ const Login = () => {
                 <input
                   type="text"
                   placeholder="type here"
-                  className="input input-bordered"
+                  className="input input-bordered  bg-white text-black"
                   required
                 />
                 
               </div>
               <div className="form-control my-6 ">
-                <button className="btn bg-[#D1A054] hover:bg-[#b88e4f] text-white">Login</button>
+                <button className="btn bg-[#D1A054] hover:bg-[#b88e4f] text-white border-0">Login</button>
               </div>
               <div className="text-center">
               <Link to='/sign-up'className="text-[#D1A054]  " >New here? Create a New Account</Link>
               <div className="divider divider-horizontal mx-auto">Or sign in with </div>
               <div className="space-x-4">
-              <button className="btn btn-circle btn-outline text-xl">
+              <button className="btn btn-circle btn-outline text-xl text-black border-black">
               <FaFacebookF />
 
               </button>
-              <button className="btn btn-circle btn-outline text-xl">
+              <button className="btn btn-circle btn-outline text-xl text-black border-black">
               <FaGoogle />
 
               </button>
-              <button className="btn btn-circle btn-outline text-xl">
+              <button className="btn btn-circle btn-outline text-xl text-black border-black">
               <FaGithub />
 
               </button>
