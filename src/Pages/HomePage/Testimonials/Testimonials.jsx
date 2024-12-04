@@ -17,8 +17,9 @@ import { IoMdStar, IoMdStarHalf, IoMdStarOutline } from "react-icons/io";
 
 const Testimonials = () => {
   const [reviews, setReviews] = useState([]);
-  useEffect(() => {
-    axios.get("reviews.json").then((res) => {
+  const baseUrl = "http://localhost:5000";
+    useEffect(() => {
+    axios.get(`${baseUrl}/review`).then((res) => {
       console.log(res.data);
       setReviews(res.data);
     });

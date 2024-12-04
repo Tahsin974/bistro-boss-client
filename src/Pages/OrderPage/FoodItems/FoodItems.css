@@ -1,31 +1,24 @@
-.MuiTab-root.Mui-selected{
-    color: #ca8a04 !important;
-    
+.react-tabs__tab--selected{
+    border: none !important;
+    color: #BB8506 !important;
+    font-weight: bold !important;
+    background: none !important;
+     
 }
-.MuiTab-root{
- 
-    font-weight: 600 !important;
-}
-.css-1qltlow-MuiTabs-indicator{
-    background-color: #ca8a04 !important;
+.react-tabs__tab{
+    font-size:larger;
+    margin-right: 5px !important; 
+    text-transform: uppercase !important;   
 }
 
-@media only  screen and (max-width:500px){
-    
-.MuiTabs-flexContainer{
-    display: grid !important;
-    grid-template-columns: repeat(3 , 1fr) !important;
-    justify-items: center !important;
-    text-align: center !important;
 
+.react-tabs__tab-list{
+    border: none !important;
 }
-.css-1qltlow-MuiTabs-indicator{
-    display: none;
-}
-.MuiTab-root.Mui-selected{
-    border-bottom: 2px solid #ca8a04 !important;
-}
-}
-/* 
-MuiTabs-indicator css-1qltlow-MuiTabs-indicator
-*/
+
+@media only screen and (min-width : 490px){
+    .react-tabs>ul{
+    
+        display: flex !important;
+        justify-content: center !important;
+    }}

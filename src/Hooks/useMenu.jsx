@@ -7,7 +7,7 @@ const useMenu = () => {
   const BaseUrl = "http://localhost:5000";
 
   useEffect(() => {
-    axios.get(`${BaseUrl}/all-items`).then((res) => {
+    axios.get(`${BaseUrl}/menu`).then((res) => {
 
         setMenu(res.data);
         setLoading(false);

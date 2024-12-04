@@ -24,6 +24,7 @@ const Soups = () => {
             
             <MenuCategories
             items={soups}
+            title={'soups'}
             buttonValue={'ORDER YOUR FAVOURITE FOOD'}
             ></MenuCategories>
         </section>

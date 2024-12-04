@@ -1,12 +1,22 @@
-import { TabContext, TabList, TabPanel } from "@mui/lab";
-import { Box, Tab} from "@mui/material";
+
 import { useState } from "react";
-import useMenu from "../../../Hooks/useMenu"
-import FoodTab from "../FoodTab/FoodTab"
-import './FoodItems.css'
+import useMenu from "../../../Hooks/useMenu";
+
+import './FoodItems.css';
+import 'react-tabs/style/react-tabs.css';
+import { useParams } from "react-router";
+import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+import FoodTab from "../FoodTab/FoodTab";
 const FoodItems = () => {
   const [menu] = useMenu()
-  const [value, setValue] = useState('1');
+  const [tabIndex,setTabIndex] = useState(0);
+  const {category} = useParams();
+
+  const categories = ['salads','pizzas','soups','desserts','drinks']
+  const initialIndex = categories.indexOf(category)
+  console.log(tabIndex)
+ 
+  
   
   
 
@@ -15,62 +25,43 @@ const FoodItems = () => {
   const soups = menu.filter(item => item.category === 'soup');
   const desserts = menu.filter(item => item.category === 'dessert');
   const drinks = menu.filter(item => item.category === 'drinks');
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+ 
 
 
   return (
     <section className="my-28 space-y-10">
-      <Box >
-      <TabContext value={value}>
-        <Box >
-          <TabList onChange={handleChange} className=" mb-10"
-    centered>
-            <Tab label="SALADS" value="1" />
-            <Tab label="PIZZAS" value="2" />
-            <Tab label="SOUPS" value="3" />
-            <Tab label="DESSERTS" value="4" />
-            <Tab label="DRINKS" value="5" />
-          </TabList>
-        </Box>
-        <TabPanel value="1">
-          <FoodTab
-          items={salads}
-          isPrice={true}
-          >
-          </FoodTab>
-        </TabPanel>
-        <TabPanel value="2">
-        <FoodTab
-          items={pizzas}
-          isPrice={true}
-          >
-          </FoodTab>
-        </TabPanel>
-        <TabPanel value="3">
-        <FoodTab
-          items={soups}
-          isPrice={true}
-          >
-          </FoodTab>
-        </TabPanel>
-        <TabPanel value="4">
-        <FoodTab
-          items={desserts}
-          isPrice={true}
-          >
-          </FoodTab>
-        </TabPanel>
-        <TabPanel value="5">
-        <FoodTab
-          items={drinks}
-          isPrice={true}
-          >
-          </FoodTab>
-        </TabPanel>
-      </TabContext>
-    </Box>
+      <Tabs  defaultIndex={initialIndex} onSelect={(index) => setTabIndex(index)}>
+  <TabList className='mb-10'>
+    {
+      categories.map(category => <Tab key={category}>{category}</Tab>)
+    }
+  </TabList>
+  <TabPanel>
+    <FoodTab
+    items={salads}
+    ></FoodTab>
+  </TabPanel>
+  <TabPanel>
+  <FoodTab
+    items={pizzas}
+    ></FoodTab>
+  </TabPanel>
+  <TabPanel>
+  <FoodTab
+    items={soups}
+    ></FoodTab>
+  </TabPanel>
+  <TabPanel>
+  <FoodTab
+    items={desserts}
+    ></FoodTab>
+  </TabPanel>
+  <TabPanel>
+  <FoodTab
+    items={drinks}
+    ></FoodTab>
+  </TabPanel>
+</Tabs>
       
     </section>
   );

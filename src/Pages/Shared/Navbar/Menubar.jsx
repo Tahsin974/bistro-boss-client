@@ -65,7 +65,7 @@ const Menubar = () => {
         <Link to='/menu' className="text-white font-light hover:text-orange-500">OUR MENU</Link>
       </NavbarItem>
       <NavbarItem>
-        <Link to="/order" className="text-white font-light hover:text-orange-500">ORDER FOOD</Link>
+        <Link to="/order/salads" className="text-white font-light hover:text-orange-500">ORDER FOOD</Link>
       </NavbarItem>
       
       
