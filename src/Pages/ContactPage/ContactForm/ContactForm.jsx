@@ -13,7 +13,7 @@ const ContactForm = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-3">
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Name*</span>
+              <span className="label-text font-semibold">Name*</span>
             </label>
             <input
               type="text"
@@ -24,7 +24,7 @@ const ContactForm = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Email*</span>
+              <span className="label-text font-semibold">Email*</span>
             </label>
             <input
               type="email"
@@ -35,7 +35,7 @@ const ContactForm = () => {
           </div>
           <div className="form-control lg:col-span-2 md:col-span-2">
             <label className="label">
-              <span className="label-text">Phone*</span>
+              <span className="label-text font-semibold">Phone*</span>
             </label>
             <input
               type="text"
@@ -47,7 +47,7 @@ const ContactForm = () => {
           </div>
           <div className="form-control lg:col-span-2 md:col-span-2">
             <label className="label">
-              <span className="label-text">Message*</span>
+              <span className="label-text font-semibold">Message*</span>
             </label>
             <textarea
              

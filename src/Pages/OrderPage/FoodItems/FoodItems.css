@@ -16,9 +16,17 @@
     border: none !important;
 }
 
-@media only screen and (min-width : 490px){
+@media only screen and (min-width : 600px){
     .react-tabs>ul{
     
         display: flex !important;
         justify-content: center !important;
     }}
+
+
+
+
+
+
+
+    

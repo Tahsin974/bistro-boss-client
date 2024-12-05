@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Dropdown,
   DropdownItem,
   DropdownMenu,
@@ -13,9 +14,18 @@ import {
 import { useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router";
+import useAuthContext from "../../../Hooks/useAuthContext";
 
 const Menubar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const {user,userLogOut,setUser,setLoading} = useAuthContext();
+  const handleLogOut = () =>{
+    userLogOut()
+    .then(()=>{
+      setUser({})
+      setLoading(false)
+    })
+  }
   const viewCartButton =<>
   <Dropdown>
           <NavbarItem>
@@ -99,11 +109,41 @@ const Menubar = () => {
         
         <NavbarContent justify="end" className="items-center lg:space-x-5 md:space-x-5 sm:space-x-10">
           {viewCartButton}
+          {user?.email ? 
+          
+          <Dropdown placement="bottom-end">
+          <DropdownTrigger>
+            <Avatar
+              isBordered
+              as="button"
+              className="transition-transform "
+              color="secondary"
+              name="Jason Hughes"
+              size="sm"
+              src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+            />
+          </DropdownTrigger>
+          <DropdownMenu aria-label="Profile Actions" variant="flat" className="bg-neutral-600 text-white max-w-56 ">
+            <DropdownItem key="profile" className="h-14 gap-2 cursor-default">
+              <p className="font-semibold">Signed in as</p>
+              <p className="font-semibold">{user.email}</p>
+            </DropdownItem>
+            <DropdownItem   key="logout" color="danger">
+              <span onClick={handleLogOut} className="hover:text-orange-600"> LogOut</span>
+            
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
+
+          :
+          
           <NavbarItem>
             <Link to='/login'>
             <button className="btn lg:btn-md md:btn-sm btn-xs btn-outline border-orange-500 text-orange-500 hover:bg-orange-500 hover:border-orange-500 hover:text-white rounded-none">Login</button>
             </Link>
           </NavbarItem>
+          }
+          
           
         </NavbarContent>
         <NavbarMenu className="bg-black bg-opacity-70 max-w-48">
@@ -116,40 +156,3 @@ const Menubar = () => {
 
 export default Menubar;
 
-
-/* 
-
-<Dropdown>
-          <NavbarItem>
-            <DropdownTrigger>
-              <Button
-                disableRipple
-                className="p-0 bg-transparent data-[hover=true]:bg-transparent"
-                endContent={icons.chevron}
-                radius="sm"
-                variant="light"
-              >
-                Features
-              </Button>
-            </DropdownTrigger>
-          </NavbarItem>
-          <DropdownMenu
-            aria-label="ACME features"
-            className="w-[340px]"
-            itemClasses={{
-              base: "gap-4",
-            }}
-          >
-            <DropdownItem
-              key="autoscaling"
-              description="ACME scales apps to meet user demand, automagically, based on load."
-              startContent={icons.scale}
-            >
-              Autoscaling
-            </DropdownItem>
-            
-            
-          </DropdownMenu>
-        </Dropdown>
-
-*/

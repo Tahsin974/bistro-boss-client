@@ -4,7 +4,7 @@ import Home from "../Pages/HomePage/Home/Home"
 import Menu from "../Pages/MenuPage/Menu/Menu";
 import Order from "../Pages/OrderPage/Order/Order";
 import Contact from "../Pages/ContactPage/Contact/Contact";
-import Login from "../Pages/LoginPage/Login";
+import Login from "../Pages/LoginPage/Login/Login"
 import SignUp from "../Pages/SignUpPage/SignUp/SignUp";
 
 const ReactRoutes = () => {

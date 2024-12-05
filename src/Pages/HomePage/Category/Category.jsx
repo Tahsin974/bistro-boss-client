@@ -20,30 +20,44 @@ const Category = () => {
         Heading={"ORDER ONLINE"}
         ></SectionTitle>
         <Swiper
-        slidesPerView={3}
-        spaceBetween={30}
+        slidesPerView={2}
+        spaceBetween={10}
+        breakpoints={{
+          550: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 40,
+          },
+        }}
         
         pagination={{
           clickable: true,
         }}
         modules={[Pagination]}
-        className="mySwiper my-10 max-w-4xl "
+        className="mySwiper my-10  "
       >
         <SwiperSlide>
             <img src={slide1} alt="category" />
-            <h2 className='lg:text-3xl md:text-2xl sm:text-xl text-xs  rye-regular  lg:-mt-14 md:-mt-14 sm:-mt-14 -mt-8 text-center text-white'>SALADS</h2>
+            <h2 className='lg:text-3xl md:text-3xl sm:text-3xl text-xl  rye-regular  lg:-mt-14 md:-mt-14 sm:-mt-14 -mt-10 text-center text-white'>SALADS</h2>
         </SwiperSlide>
         <SwiperSlide>
             <img src={slide2} alt="category" />
-            <h2 className='lg:text-3xl md:text-2xl sm:text-xl text-xs  rye-regular text-center lg:-mt-14 md:-mt-14 sm:-mt-14 -mt-8 text-white '>PIZZAS</h2>
+            <h2 className='lg:text-3xl md:text-3xl sm:text-3xl text-xl  rye-regular  lg:-mt-14 md:-mt-14 sm:-mt-14 -mt-10 text-center text-white'>PIZZAS</h2>
         </SwiperSlide>
         <SwiperSlide>
             <img src={slide3} alt="category" />
-            <h2 className='lg:text-3xl md:text-2xl sm:text-xl text-xs  rye-regular text-center lg:-mt-14 md:-mt-14 sm:-mt-14 -mt-8 text-white '>SOUPS</h2>
+            <h2 className='lg:text-3xl md:text-3xl sm:text-3xl text-xl  rye-regular  lg:-mt-14 md:-mt-14 sm:-mt-14 -mt-10 text-center text-white'>SOUPS</h2>
         </SwiperSlide>
         <SwiperSlide>
             <img src={slide4} alt="category" />
-            <h2 className='lg:text-3xl md:text-2xl sm:text-xl text-xs  rye-regular text-center lg:-mt-14 md:-mt-14 sm:-mt-14 -mt-8 text-white'>DESSERTS</h2>
+            <h2 className='lg:text-3xl md:text-3xl sm:text-3xl text-xl  rye-regular text-center lg:-mt-14 md:-mt-14 sm:-mt-14 -mt-10 text-white'>DESSERTS</h2>
         </SwiperSlide>
       </Swiper>
         </section>

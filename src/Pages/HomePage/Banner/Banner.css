@@ -1,8 +1,11 @@
 .thumbs-wrapper{
     justify-items: center !important;
 }
-.carousel .control-dots .dot.selected, .carousel .control-dots .dot:hover{
+.carousel .control-dots .dot, .dot.selected, .carousel .control-dots .dot:hover{
     background-color: #007AFF !important;
     border-color: #007AFF !important;
+    height: 24px !important;
+    width: 5px !important;
+    border-radius: 0% !important;
     
 }
