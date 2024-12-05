@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import DynamicTitle from "../../../Components/DynamicTitle/DynamicTitle";
 import bgImg from "../../../assets/others/authentication.png";
 import loginImg from "../../../assets/others/authentication2.png"
@@ -8,13 +8,36 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Input } from "@nextui-org/react";
 import useAuthContext from "../../../Hooks/useAuthContext";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const navigate = useNavigate();
-  const {userLogin,setUser,setLoading} = useAuthContext();
+  const location = useLocation();
+  console.log(location)
+  const {userLogin,setUser,setLoading,googleSignIn} = useAuthContext();
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => setIsVisible(!isVisible);
+  // Google Sign Up
+  const handleGoogleSignIn = () =>{
+    
+    googleSignIn()
+    .then((result) => {
+      const user = result.user;
+      setUser(user)
+      setLoading(false)
+      Swal.fire({
+        title: "Login Successfully Done",
+        icon: "success",
+      }).then((result) => {
+        if (result.isConfirmed) {
+         
+          navigate(location.state || '/home',{replace:true})
+          reset()
+        }
+      });
+    })
+  }
   // React Hook Form
   const { register, handleSubmit,reset, formState: { errors } } = useForm();
   const onSubmit = data => {
@@ -23,8 +46,17 @@ const Login = () => {
       const user = result.user;
       setUser(user)
       setLoading(false)
-      navigate('/home')
-      reset()
+      Swal.fire({
+        title: "Login Successfully Done",
+        icon: "success",
+      }).then((result) => {
+        if (result.isConfirmed) {
+         
+          navigate(location.state || '/home',{replace:true})
+          reset()
+        }
+      });
+      
     })
     console.log(data)};
 
@@ -43,10 +75,21 @@ const Login = () => {
   }
 
   else {
-      alert('Captcha Does Not Match');
-      setDisabled(true)
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Captcha Does not match",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setDisabled(true)
       e.target.value = "";
+      }
+    });
+     
   }
+
+
+  
 
   }
   return (
@@ -132,7 +175,9 @@ const Login = () => {
               <div className="form-control my-6 ">
                 <button disabled={disabled} className="btn bg-[#D1A054] hover:bg-[#b88e4f] text-white border-0">Login</button>
               </div>
-              <div className="text-center">
+              
+            </form>
+            <div className="text-center">
               <Link to='/sign-up'className="link cursor-pointer text-[#D1A054]  " >New here? Create a New Account</Link>
               <div className="divider divider-horizontal mx-auto">Or sign in with </div>
               <div className="space-x-4">
@@ -140,7 +185,7 @@ const Login = () => {
               <FaFacebookF />
 
               </button>
-              <button className="btn btn-circle btn-outline text-xl text-black border-black">
+              <button onClick={handleGoogleSignIn} className="btn btn-circle btn-outline text-xl text-black border-black">
               <FaGoogle />
 
               </button>
@@ -150,7 +195,6 @@ const Login = () => {
               </button>
               </div>
               </div>
-            </form>
            
           </div>
         </div>

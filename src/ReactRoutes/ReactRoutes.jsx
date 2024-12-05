@@ -6,6 +6,7 @@ import Order from "../Pages/OrderPage/Order/Order";
 import Contact from "../Pages/ContactPage/Contact/Contact";
 import Login from "../Pages/LoginPage/Login/Login"
 import SignUp from "../Pages/SignUpPage/SignUp/SignUp";
+import PrivateRoute from "./PrivateRoute";
 
 const ReactRoutes = () => {
   return (
@@ -15,7 +16,9 @@ const ReactRoutes = () => {
     <Route path="/" element={<Home></Home>} />  
     <Route path="home" element={<Home></Home>} />  
     <Route path="menu" element={<Menu></Menu>} />  
-    <Route path="order/:category" element={<Order></Order>} />  
+    <Route path="order/:category" element={<PrivateRoute>
+      <Order></Order>
+    </PrivateRoute>} />  
     <Route path="contact" element={<Contact></Contact>} />  
     <Route path="login" element={<Login></Login>} />  
     <Route path="sign-up" element={<SignUp></SignUp>} />  

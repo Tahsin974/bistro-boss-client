@@ -117,16 +117,20 @@ const Menubar = () => {
               isBordered
               as="button"
               className="transition-transform "
-              color="secondary"
-              name="Jason Hughes"
+              
+              name={user.displayName}
               size="sm"
-              src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+              src={user?.photoURL}
             />
           </DropdownTrigger>
           <DropdownMenu aria-label="Profile Actions" variant="flat" className="bg-neutral-600 text-white max-w-56 ">
             <DropdownItem key="profile" className="h-14 gap-2 cursor-default">
               <p className="font-semibold">Signed in as</p>
-              <p className="font-semibold">{user.email}</p>
+              <p className="font-semibold">{user.displayName}</p>
+            </DropdownItem>
+            <DropdownItem   >
+              <Link>Your Account</Link>
+            
             </DropdownItem>
             <DropdownItem   key="logout" color="danger">
               <span onClick={handleLogOut} className="hover:text-orange-600"> LogOut</span>

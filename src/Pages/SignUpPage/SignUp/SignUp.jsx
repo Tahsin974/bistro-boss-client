@@ -7,13 +7,39 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Input } from "@nextui-org/react";
 import useAuthContext from "../../../Hooks/useAuthContext";
+import Swal from "sweetalert2";
+import { useLocation } from "react-router";
 
 const SignUp = () => {
-  const {createUser,setUser,setLoading} = useAuthContext();
+  const {createUser,setUser,setLoading,googleSignIn,updateUserProfile} = useAuthContext();
   const navigate = useNavigate();
-
+  const location = useLocation()
+  console.log(location)
   const [isVisible, setIsVisible] = useState(false);
   const toggleVisibility = () => setIsVisible(!isVisible);
+  // Google Sign Up
+  const handleGoogleSignIn = () =>{
+    
+    googleSignIn()
+    .then((result) => {
+      const user = result.user;
+      setUser(user)
+      setLoading(false)
+      Swal.fire({
+        title: "Sign In Successfully Done",
+        icon: "success",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          
+            navigate( '/home')
+            
+         
+          
+          
+        }
+      });
+    })
+  }
   // React Hook Form
   const {
     register,
@@ -27,9 +53,27 @@ const SignUp = () => {
     const user = result.user;
     setUser(user)
     setLoading(false)
-    navigate('/home')
-    reset()
-   })
+    updateUserProfile(data.name,data.photoUrl)
+    .then(() => {
+      
+      Swal.fire({
+        title: "Account Created Successfully ",
+        icon: "success",
+      }).then((result) => {
+        if (result.isConfirmed) {
+         
+          navigate( '/home')
+            reset()
+        }
+      });
+    })
+    
+    
+    
+    
+  })
+    
+  
     console.log(data)};
   return (
     <div>
@@ -64,6 +108,20 @@ const SignUp = () => {
                 />
                 {errors.name && (
                   <span className="text-red-600">Name is required</span>
+                )}
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text font-semibold">Photo Url</span>
+                </label>
+                <input
+                  type="url"
+                  {...register("photoUrl", { required: true })}
+                  placeholder="Enter Photo Url"
+                  className="input input-bordered  bg-white text-black"
+                />
+                {errors.photoUrl && (
+                  <span className="text-red-600">Photo Url is required</span>
                 )}
               </div>
               <div className="form-control">
@@ -135,26 +193,26 @@ const SignUp = () => {
                   Sign Up
                 </button>
               </div>
-              <div className="text-center">
-                <Link to="/login" className="link cursor-pointer text-[#D1A054]  ">
-                  Already registered? Go to log in
-                </Link>
-                <div className="divider divider-horizontal mx-auto">
-                  Or sign up with{" "}
-                </div>
-                <div className="space-x-4">
-                  <button className="btn btn-circle btn-outline text-xl  text-black border-black">
-                    <FaFacebookF />
-                  </button>
-                  <button className="btn btn-circle btn-outline text-xl text-black border-black">
-                    <FaGoogle />
-                  </button>
-                  <button className="btn btn-circle btn-outline text-xl text-black border-black">
-                    <FaGithub />
-                  </button>
-                </div>
-              </div>
+              
             </form>
+            <div className="text-center">
+              <Link to='/sign-up'className="link cursor-pointer text-[#D1A054]  " >New here? Create a New Account</Link>
+              <div className="divider divider-horizontal mx-auto">Or sign in with </div>
+              <div className="space-x-4">
+              <button className="btn btn-circle btn-outline text-xl text-black border-black">
+              <FaFacebookF />
+
+              </button>
+              <button onClick={handleGoogleSignIn} className="btn btn-circle btn-outline text-xl text-black border-black">
+              <FaGoogle />
+
+              </button>
+              <button className="btn btn-circle btn-outline text-xl text-black border-black">
+              <FaGithub />
+
+              </button>
+              </div>
+              </div>
           </div>
         </div>
       </div>
