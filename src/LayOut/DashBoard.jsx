@@ -91,7 +91,7 @@ const DashBoard = () => {
   return (
     <div className="bg-[#F3F3F3]">
       <DynamicTitle pageName={"Dashboard"}></DynamicTitle>
-      <div className="navbar bg-[#D1A054] text-black   w-full">
+      <div className="navbar bg-[#D1A054] text-black   ">
             <div className="flex-none lg:hidden">
               <label
                 htmlFor="my-drawer-3"
@@ -135,7 +135,7 @@ const DashBoard = () => {
           </div>
       <div className="drawer ">
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex items-center">
+        <div className="drawer-content lg:flex items-center">
           {/* Navbar */}
           <div className="bg-[#D1A054] min-h-full  text-black  w-64 p-4 cinzel-medium hidden lg:flex ">
           <ul className="menu text-xl">

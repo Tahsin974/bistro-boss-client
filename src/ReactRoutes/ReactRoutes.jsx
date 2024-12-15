@@ -10,15 +10,18 @@ import PrivateRoute from "./PrivateRoute";
 import DashBoard from "../LayOut/DashBoard";
 import Cart from "../Pages/DashBoard/Cart";
 
+
 const ReactRoutes = () => {
   return (
     <div>
       <Routes>
+     
         <Route path="/dashboard" element={<PrivateRoute>
           <DashBoard></DashBoard>
         </PrivateRoute>}>
         <Route path="/dashboard" element={<Cart></Cart>} />  
         <Route path="/dashboard/cart" element={<Cart></Cart>} />  
+        
         </Route>
       <Route path="/" element={<LayOut></LayOut>}>
     <Route path="/" element={<Home></Home>} />  
@@ -34,6 +37,7 @@ const ReactRoutes = () => {
     <Route path="login" element={<Login></Login>} />  
     <Route path="sign-up" element={<SignUp></SignUp>} />  
     </Route>
+
       </Routes>
     </div>
   );

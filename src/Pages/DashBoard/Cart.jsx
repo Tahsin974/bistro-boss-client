@@ -46,13 +46,13 @@ const Cart = () => {
       ></SectionTitle>
 
       <div className="p-3 bg-white lg:mx-10 my-16">
-        <div className="flex justify-between items-center pb-4 lg:text-2xl md:text-2xl sm:texl-lg cinzel-bold">
+        <div className="grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-3 gap-4 justify-items-center items-center pb-4 text-2xl cinzel-bold">
             <h3>Total Orders: {cart.length}</h3>
             <h3>Total Price: {totalPrice}</h3>
             <button className="btn bg-[#D1A054] text-white hover:bg-[#bb8c46]">pay</button>
         </div>
         <div className="overflow-x-auto">
-          <table className="table lg:table-lg md:table-md sm:table-sm table-xs ">
+          <table className="table ">
             {/* head */}
             <thead className="bg-[#D1A054]">
               <tr className="text-white text-lg ">
@@ -90,6 +90,7 @@ const Cart = () => {
             </tbody>
         
           </table>
+
         </div>
       </div>
     </div>
@@ -97,3 +98,6 @@ const Cart = () => {
 };
 
 export default Cart;
+
+
+
