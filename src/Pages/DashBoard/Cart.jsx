@@ -49,7 +49,7 @@ const Cart = () => {
         <div className="grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-3 gap-4 justify-items-center items-center pb-4 text-2xl cinzel-bold">
             <h3>Total Orders: {cart.length}</h3>
             <h3>Total Price: {totalPrice}</h3>
-            <button className="btn bg-[#D1A054] text-white hover:bg-[#bb8c46]">pay</button>
+            <button className="btn bg-[#D1A054] border-[#D1A054] text-white hover:bg-[#bb8c46] hover:border-[#D1A054]">pay</button>
         </div>
         <div className="overflow-x-auto">
           <table className="table ">

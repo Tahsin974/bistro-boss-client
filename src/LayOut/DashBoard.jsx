@@ -128,7 +128,7 @@ const DashBoard = () => {
             <div className="navbar-end">
             <ul className="menu menu-horizontal">
           {/* Navbar menu content here */}
-          <li><button onClick={handleLogOut} className="btn lg:btn-md md:btn-md btn-sm ">LogOut</button></li>
+          <li><button onClick={handleLogOut} className="btn bg-gray-200 border-gray-200 hover:border-gray-200 text-black lg:btn-md md:btn-md btn-sm ">LogOut</button></li>
 
         </ul>
             </div>
