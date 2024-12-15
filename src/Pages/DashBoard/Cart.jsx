@@ -45,14 +45,14 @@ const Cart = () => {
         subHeading={"My Cart"}
       ></SectionTitle>
 
-      <div className="p-3 bg-white mx-10 my-16">
+      <div className="p-3 bg-white lg:mx-10 my-16">
         <div className="flex justify-between items-center pb-4 lg:text-2xl md:text-2xl sm:texl-lg cinzel-bold">
             <h3>Total Orders: {cart.length}</h3>
             <h3>Total Price: {totalPrice}</h3>
             <button className="btn bg-[#D1A054] text-white hover:bg-[#bb8c46]">pay</button>
         </div>
         <div className="overflow-x-auto">
-          <table className="table lg:table-lg md:table-md sm:table-sm table-xs w-full">
+          <table className="table lg:table-lg md:table-md sm:table-sm table-xs ">
             {/* head */}
             <thead className="bg-[#D1A054]">
               <tr className="text-white text-lg ">
