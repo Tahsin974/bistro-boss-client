@@ -16,9 +16,12 @@ const ReactRoutes = () => {
     <Route path="/" element={<Home></Home>} />  
     <Route path="home" element={<Home></Home>} />  
     <Route path="menu" element={<Menu></Menu>} />  
-    <Route path="order/:category" element={<PrivateRoute>
+    {/* <Route path="order/:category" element={<PrivateRoute>
       <Order></Order>
-    </PrivateRoute>} />  
+    </PrivateRoute>} />   */}
+    <Route path="order/:category" element={
+      <Order></Order>
+    } />  
     <Route path="contact" element={<Contact></Contact>} />  
     <Route path="login" element={<Login></Login>} />  
     <Route path="sign-up" element={<SignUp></SignUp>} />  

@@ -72,9 +72,7 @@ const SignUp = () => {
     
     
   })
-    
-  
-    console.log(data)};
+};
   return (
     <div>
       <DynamicTitle pageName="Sign Up"></DynamicTitle>

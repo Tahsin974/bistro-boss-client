@@ -10,16 +10,16 @@ import { Navigation } from "swiper/modules";
 
 // import React Hooks and Axios
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { FaQuoteLeft } from "react-icons/fa";
 import Rating from "react-rating";
 import { IoMdStar, IoMdStarHalf, IoMdStarOutline } from "react-icons/io";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const Testimonials = () => {
   const [reviews, setReviews] = useState([]);
-  const baseUrl = "http://localhost:5000";
+  const axiosSecure = useAxiosSecure();
     useEffect(() => {
-    axios.get(`${baseUrl}/review`).then((res) => {
+    axiosSecure.get('/review').then((res) => {
       console.log(res.data);
       setReviews(res.data);
     });

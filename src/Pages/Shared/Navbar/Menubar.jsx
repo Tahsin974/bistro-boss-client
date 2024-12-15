@@ -15,10 +15,12 @@ import { useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router";
 import useAuthContext from "../../../Hooks/useAuthContext";
+import useCart from "../../../Hooks/useCart";
 
 const Menubar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const {user,userLogOut,setUser,setLoading} = useAuthContext();
+  const {cart} = useCart()
   const handleLogOut = () =>{
     userLogOut()
     .then(()=>{
@@ -27,12 +29,12 @@ const Menubar = () => {
     })
   }
   const viewCartButton =<>
-  <Dropdown>
-          <NavbarItem>
+  <Dropdown >
+          <NavbarItem >
             <DropdownTrigger>
             <div className="indicator">
             <FaShoppingCart className="text-2xl text-green-400 cursor-pointer" />
-          <span className="badge badge-sm indicator-item bg-red-600 border-red-600 text-white">8</span>
+          <span className="badge badge-sm indicator-item bg-red-600 border-red-600 text-white">{cart.length}</span>
         </div>
                 {/* <FaShoppingCart className="text-xl" /> */}
 
@@ -49,7 +51,7 @@ const Menubar = () => {
         
         className="card">
         <div className="card-body">
-          <span className="text-lg font-bold">8 Items</span>
+          <span className="text-lg font-bold">{cart.length} Items</span>
           <span className="text-info">Subtotal: $999</span>
           <div className="card-actions">
             <button className="btn btn-primary btn-block">View cart</button>
