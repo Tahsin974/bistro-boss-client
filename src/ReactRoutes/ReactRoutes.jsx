@@ -7,11 +7,19 @@ import Contact from "../Pages/ContactPage/Contact/Contact";
 import Login from "../Pages/LoginPage/Login/Login"
 import SignUp from "../Pages/SignUpPage/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
+import Database from "../LayOut/Database";
+import Cart from "../Pages/Database/Cart";
 
 const ReactRoutes = () => {
   return (
     <div>
       <Routes>
+        <Route path="/database" element={<PrivateRoute>
+          <Database></Database>
+        </PrivateRoute>}>
+        <Route path="/database" element={<Cart></Cart>} />  
+        <Route path="/database/cart" element={<Cart></Cart>} />  
+        </Route>
       <Route path="/" element={<LayOut></LayOut>}>
     <Route path="/" element={<Home></Home>} />  
     <Route path="home" element={<Home></Home>} />  
