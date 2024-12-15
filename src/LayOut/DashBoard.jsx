@@ -1,5 +1,5 @@
 import {
-  FaArrowRight,
+  
   FaCalendarAlt,
   FaCreditCard,
   FaEnvelope,
@@ -15,7 +15,7 @@ import DynamicTitle from "../Components/DynamicTitle/DynamicTitle";
 import useAuthContext from "../Hooks/useAuthContext";
 import useCart from "../Hooks/useCart";
 
-const Database = () => {
+const DashBoard = () => {
   const {cart} = useCart()
   const {userLogOut,setUser,setLoading} = useAuthContext();
   const handleLogOut = () =>{
@@ -25,9 +25,72 @@ const Database = () => {
       setLoading(false)
     })
   }
+
+  const navs = <>
+  <li>
+              <Link to='/dashboard/user-home' >
+              <FaHome />
+              User Home</Link>
+            </li>
+            <li>
+              <Link
+              to='/dashboard/reservation'
+              ><FaCalendarAlt />Reservation</Link>
+            </li>
+            <li>
+              <Link 
+              to='/dashboard/payment-history'
+              >
+              <FaCreditCard></FaCreditCard>
+              Payment History</Link>
+            </li>
+            <li>
+              <Link to='/dashboard/cart'><FaShoppingCart />
+              My Cart<div className="badge">{cart.length}</div></Link>
+            </li>
+            <li>
+              <Link
+              to='/dashboard/add-review'
+              >
+              <FaPlus></FaPlus>
+              Add Review</Link>
+            </li>
+            <li>
+              <Link 
+              to='/dashboard/my-bookings'>
+              <FaList />
+
+              My Bookings</Link>
+            </li>
+            
+            <hr className="my-5" />
+            <li>
+              <Link to='/home' >
+              <FaHome />
+              Home</Link>
+            </li>
+            <li>
+              <Link to='/menu'>
+              <FaList />
+
+              Menu</Link>
+            </li>
+            <li>
+              <Link to='/order/salads'>
+              <FaShoppingBag />
+
+              Shop</Link>
+            </li>
+            <li>
+              <Link to='/contact'>
+              <FaEnvelope />
+
+              Contact</Link>
+            </li>
+  </>
   return (
     <div className="bg-[#F3F3F3]">
-      <DynamicTitle pageName={"Database"}></DynamicTitle>
+      <DynamicTitle pageName={"Dashboard"}></DynamicTitle>
       <div className="navbar bg-[#D1A054] text-black   w-full">
             <div className="flex-none lg:hidden">
               <label
@@ -66,7 +129,7 @@ const Database = () => {
             <ul className="menu menu-horizontal">
           {/* Navbar menu content here */}
           <li><button onClick={handleLogOut} className="btn lg:btn-md md:btn-md btn-sm ">LogOut</button></li>
-       
+
         </ul>
             </div>
           </div>
@@ -78,59 +141,7 @@ const Database = () => {
           <ul className="menu text-xl">
           
             {/* Sidebar content here */}
-            <li>
-              <Link >
-              <FaHome />
-              User Home</Link>
-            </li>
-            <li>
-              <Link><FaCalendarAlt />Reservation</Link>
-            </li>
-            <li>
-              <Link>
-              <FaCreditCard></FaCreditCard>
-              Payment History</Link>
-            </li>
-            <li>
-              <Link to='/database/cart'><FaShoppingCart />
-              My Cart<div className="badge">{cart.length}</div></Link>
-            </li>
-            <li>
-              <Link>
-              <FaPlus></FaPlus>
-              Add Review</Link>
-            </li>
-            <li>
-              <Link>
-              <FaList />
-
-              My Bookings</Link>
-            </li>
-            
-            <hr className="my-5" />
-            <li>
-              <Link to='/home' >
-              <FaHome />
-              Home</Link>
-            </li>
-            <li>
-              <Link to='/menu'>
-              <FaList />
-
-              Menu</Link>
-            </li>
-            <li>
-              <Link to='/order/salads'>
-              <FaShoppingBag />
-
-              Shop</Link>
-            </li>
-            <li>
-              <Link to='/contact'>
-              <FaEnvelope />
-
-              Contact</Link>
-            </li>
+            {navs}
             
           </ul>
           </div>
@@ -156,59 +167,7 @@ const Database = () => {
                 </span>
               </p>
             {/* Sidebar content here */}
-            <li>
-              <Link >
-              <FaHome />
-              User Home</Link>
-            </li>
-            <li>
-              <Link><FaCalendarAlt />Reservation</Link>
-            </li>
-            <li>
-              <Link>
-              <FaCreditCard></FaCreditCard>
-              Payment History</Link>
-            </li>
-            <li>
-              <Link to='/database/cart'><FaShoppingCart />
-              My Cart<div className="badge">{cart.length}</div></Link>
-            </li>
-            <li>
-              <Link>
-              <FaPlus></FaPlus>
-              Add Review</Link>
-            </li>
-            <li>
-              <Link>
-              <FaList />
-
-              My Bookings</Link>
-            </li>
-            
-            <hr className="my-5" />
-            <li>
-              <Link to='/home' >
-              <FaHome />
-              Home</Link>
-            </li>
-            <li>
-              <Link to='/menu'>
-              <FaList />
-
-              Menu</Link>
-            </li>
-            <li>
-              <Link to='/order/salads'>
-              <FaShoppingBag />
-
-              Shop</Link>
-            </li>
-            <li>
-              <Link to='/contact'>
-              <FaEnvelope />
-
-              Contact</Link>
-            </li>
+            {navs}
             
           </ul>
           
@@ -218,4 +177,4 @@ const Database = () => {
   );
 };
 
-export default Database;
+export default DashBoard;

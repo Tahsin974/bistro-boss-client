@@ -7,18 +7,18 @@ import Contact from "../Pages/ContactPage/Contact/Contact";
 import Login from "../Pages/LoginPage/Login/Login"
 import SignUp from "../Pages/SignUpPage/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
-import Database from "../LayOut/Database";
-import Cart from "../Pages/Database/Cart";
+import DashBoard from "../LayOut/DashBoard";
+import Cart from "../Pages/DashBoard/Cart";
 
 const ReactRoutes = () => {
   return (
     <div>
       <Routes>
-        <Route path="/database" element={<PrivateRoute>
-          <Database></Database>
+        <Route path="/dashboard" element={<PrivateRoute>
+          <DashBoard></DashBoard>
         </PrivateRoute>}>
-        <Route path="/database" element={<Cart></Cart>} />  
-        <Route path="/database/cart" element={<Cart></Cart>} />  
+        <Route path="/dashboard" element={<Cart></Cart>} />  
+        <Route path="/dashboard/cart" element={<Cart></Cart>} />  
         </Route>
       <Route path="/" element={<LayOut></LayOut>}>
     <Route path="/" element={<Home></Home>} />  

@@ -54,7 +54,7 @@ const Menubar = () => {
           <span className="text-lg font-bold">{cart.length} Items</span>
           <span className="text-info">Subtotal: $999</span>
           <div className="card-actions">
-            <Link to='/database/cart'>
+            <Link to='/dashboard/cart'>
             <button className="btn btn-primary btn-block">View cart</button>
             </Link>
           </div>
@@ -73,7 +73,7 @@ const Menubar = () => {
         <Link to='/contact' className="text-white font-light hover:text-orange-500">CONTACT US</Link>
       </NavbarItem>
       <NavbarItem>
-        <Link to='/database' className="text-white font-light hover:text-orange-500">DASHBOARD</Link>
+        <Link to='/dashboard' className="text-white font-light hover:text-orange-500">DASHBOARD</Link>
       </NavbarItem>
       <NavbarItem>
         <Link to='/menu' className="text-white font-light hover:text-orange-500">OUR MENU</Link>
