@@ -4,7 +4,7 @@ import Menubar from "../Pages/Shared/Navbar/Menubar";
 
 const LayOut = () => {
     const location = useLocation();
-    const noHeaderFooter = location.pathname.includes('/login') || location.pathname.includes('/sign-up') 
+    const noHeaderFooter = location.pathname.includes('/login') || location.pathname.includes('/sign-up') ||location.pathname.includes('/secret') 
     return (
         <div>
             {noHeaderFooter || <Menubar></Menubar>}

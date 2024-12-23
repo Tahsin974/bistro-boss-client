@@ -1,5 +1,4 @@
 import {
-  
   FaCalendarAlt,
   FaCreditCard,
   FaEnvelope,
@@ -10,167 +9,208 @@ import {
   FaShoppingCart,
 } from "react-icons/fa";
 
+// bg-[#D1A054]
+
 import { Link, Outlet } from "react-router";
 import DynamicTitle from "../Components/DynamicTitle/DynamicTitle";
 import useAuthContext from "../Hooks/useAuthContext";
 import useCart from "../Hooks/useCart";
+import SideBar from "../Components/SideBar/SideBar";
 
 const DashBoard = () => {
-  const {cart} = useCart()
-  const {userLogOut,setUser,setLoading} = useAuthContext();
-  const handleLogOut = () =>{
-    userLogOut()
-    .then(()=>{
-      setUser({})
-      setLoading(false)
-    })
-  }
+  const { cart } = useCart();
+  const { userLogOut, setUser, setLoading, user } = useAuthContext();
+  const handleLogOut = () => {
+    userLogOut().then(() => {
+      setUser({});
+      setLoading(false);
+    });
+  };
+  const menuItems = [
+    {
+      path: "/dashboard/user-home",
+      label: "User Home",
+      icon: <FaHome size={25} />,
+    },
+    {
+      path: "/dashboard/reservation",
+      label: "Reservation",
+      icon: <FaCalendarAlt size={25} />,
+    },
+    {
+      path: "/dashboard/payment-history",
+      label: "Payment History",
+      icon: <FaCreditCard size={25} />,
+    },
+    {
+      path: "/dashboard/cart",
+      label: "My Cart",
+      icon: <FaShoppingCart size={25} />,
+    },
+    {
+      path: "/dashboard/add-review",
+      label: "Add Review",
+      icon: <FaPlus size={25}></FaPlus>,
+    },
+    {
+      path: "/dashboard/my-bookings",
+      label: "My Bookings",
+      icon: <FaList size={25}></FaList>,
+    },
+  ];
+  const pages = [
+    {
+      path: "/home",
+      label: "home",
+      icon: <FaHome size={25}></FaHome>,
+    },
+    {
+      path: "/menu",
+      label: "menu",
+      icon: <FaList size={25}></FaList>,
+    },
+    {
+      path: "/order/salads",
+      label: "Shop",
+      icon: <FaShoppingBag size={25}></FaShoppingBag>,
+    },
+    {
+      path: "FaEnvelope",
+      label: "contact",
+      icon: <FaEnvelope size={25}></FaEnvelope>,
+    },
+  ];
+  // const navs = <>
 
-  const navs = <>
-  <li>
-              <Link to='/dashboard/user-home' >
-              <FaHome />
-              User Home</Link>
-            </li>
-            <li>
-              <Link
-              to='/dashboard/reservation'
-              ><FaCalendarAlt />Reservation</Link>
-            </li>
-            <li>
-              <Link 
-              to='/dashboard/payment-history'
-              >
-              <FaCreditCard></FaCreditCard>
-              Payment History</Link>
-            </li>
-            <li>
-              <Link to='/dashboard/cart'><FaShoppingCart />
-              My Cart<div className="badge">{cart.length}</div></Link>
-            </li>
-            <li>
-              <Link
-              to='/dashboard/add-review'
-              >
-              <FaPlus></FaPlus>
-              Add Review</Link>
-            </li>
-            <li>
-              <Link 
-              to='/dashboard/my-bookings'>
-              <FaList />
-
-              My Bookings</Link>
-            </li>
-            
-            <hr className="my-5" />
-            <li>
-              <Link to='/home' >
-              <FaHome />
-              Home</Link>
-            </li>
-            <li>
-              <Link to='/menu'>
-              <FaList />
-
-              Menu</Link>
-            </li>
-            <li>
-              <Link to='/order/salads'>
-              <FaShoppingBag />
-
-              Shop</Link>
-            </li>
-            <li>
-              <Link to='/contact'>
-              <FaEnvelope />
-
-              Contact</Link>
-            </li>
-  </>
+  //           <hr className="my-5" />
+  // </>
   return (
     <div className="bg-[#F3F3F3]">
       <DynamicTitle pageName={"Dashboard"}></DynamicTitle>
-      <div className="navbar bg-[#D1A054] text-black   ">
-            <div className="flex-none lg:hidden">
+      <div className="flex">
+        <div className="lg:flex hidden">
+          <SideBar menuItems={menuItems} pages={pages}></SideBar>
+        </div>
+        <div className="flex-1 ">
+          <div className="drawer">
+            <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
+            <div className="drawer-content flex flex-col">
+              {/* Navbar */}
+              <div className="navbar bg-base-300 w-full">
+                <div className="flex-none lg:hidden">
+                  <label
+                    htmlFor="my-drawer-3"
+                    aria-label="open sidebar"
+                    className="btn btn-square btn-ghost"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      className="inline-block h-6 w-6 stroke-current"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M4 6h16M4 12h16M4 18h16"
+                      ></path>
+                    </svg>
+                  </label>
+                </div>
+
+                <div className="ms-auto me-3">
+                  <div className="dropdown dropdown-end">
+                    <div
+                      tabIndex={0}
+                      role="button"
+                      className="btn btn-ghost btn-circle avatar"
+                    >
+                      <div className="w-10 rounded-full">
+                        <img
+                          alt="Tailwind CSS Navbar component"
+                          src={user?.photoUrl}
+                        />
+                      </div>
+                    </div>
+                    <ul
+                      tabIndex={0}
+                      className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                    >
+                      <li>
+                        <a className="justify-between">
+                          Profile
+                          <span className="badge">New</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a>Settings</a>
+                      </li>
+                      <li>
+                        <btn onClick={handleLogOut}>Logout</btn>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              {/* Page content here */}
+              <div>
+                <Outlet></Outlet>
+              </div>
+            </div>
+            <div className="drawer-side">
               <label
                 htmlFor="my-drawer-3"
-                aria-label="open sidebar"
-                className="btn btn-square btn-ghost"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  className="inline-block h-6 w-6 stroke-current"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  ></path>
-                </svg>
-              </label>
-            </div>
-            <div className="mx-2 flex-1 px-2">
-            <p className=" text-center  text-black  lg:text-lg text-md ">
-                <span className="cinzel-bold">BISTRO BOSS</span>
+                aria-label="close sidebar"
+                className="drawer-overlay"
+              ></label>
+              
+              <div className="menu bg-[#D1A054] min-h-full w-80 p-4">
+              <h2 className="text-2xl "><span className="cinzel-bold">BISTRO BOSS</span>
                 <br />
                 <span
-                  className="cinzel-light
-"
+                  className="cinzel-light text-lg"
                 >
                   RESTUARANT
-                </span>
-              </p>
+                </span></h2>
+                {/* Sidebar content here */}
+                <p className="font-bold text-center mt-4 text-gray-600">Menu</p>
+            <ul className="my-2 flex-1">
+                {
+                    menuItems.map(item => <div key={item.index}>
+                        
+                    <li
+                    
+                    className={`py-2 cinzel-light ${item.class}`}
+                    >
+                        <Link
+                        to={item.path}
+                        className="flex gap-x-4 items-center text-lg uppercase"
+                        ><div>{item.icon}</div> <p>{item.label}</p></Link>
+                    </li>
+                    </div>)
+                }
+            </ul>
+            <p className="font-bold text-center mt-4 text-gray-600">Pages</p>
+            <ul className="my-2 flex-1">
+                {
+                    pages.map(item => <div key={item.index}>
+                        
+                    <li
+                    
+                    className={`py-2 cinzel-light ${item.class}`}
+                    >
+                        <Link
+                        to={item.path}
+                        className="flex gap-x-4 items-center text-lg uppercase"
+                        ><div>{item.icon}</div> <p >{item.label}</p></Link>
+                    </li>
+                    </div>)
+                }
+            </ul>
+              </div>
             </div>
-            <div className="navbar-end">
-            <ul className="menu menu-horizontal">
-          {/* Navbar menu content here */}
-          <li><button onClick={handleLogOut} className="btn bg-gray-200 border-gray-200 hover:border-gray-200 text-black lg:btn-md md:btn-md btn-sm ">LogOut</button></li>
-
-        </ul>
-            </div>
           </div>
-      <div className="drawer ">
-        <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content lg:flex items-center">
-          {/* Navbar */}
-          <div className="bg-[#D1A054] min-h-full  text-black  w-64 p-4 cinzel-medium hidden lg:flex ">
-          <ul className="menu text-xl">
-          
-            {/* Sidebar content here */}
-            {navs}
-            
-          </ul>
-          </div>
-          {/* Page content here */}
-          <div className="my-6 flex-1">
-            
-          <Outlet></Outlet>
-          </div>
-          
-        </div>
-        <div className="drawer-side">
-        <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
-        
-          <ul className="menu bg-[#D1A054] text-black min-h-full w-60 p-4 cinzel-medium text-xl">
-          <p className="lg:hidden text-center  text-white  lg:text-lg text-md pb-6">
-                <span className="cinzel-bold">BISTRO BOSS</span>
-                <br />
-                <span
-                  className="cinzel-light
-"
-                >
-                  RESTUARANT
-                </span>
-              </p>
-            {/* Sidebar content here */}
-            {navs}
-            
-          </ul>
-          
         </div>
       </div>
     </div>

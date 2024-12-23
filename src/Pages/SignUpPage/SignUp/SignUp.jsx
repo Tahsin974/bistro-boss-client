@@ -194,7 +194,7 @@ const SignUp = () => {
               
             </form>
             <div className="text-center">
-              <Link to='/sign-up'className="link cursor-pointer text-[#D1A054]  " >New here? Create a New Account</Link>
+              <Link to='/login'className="link cursor-pointer text-[#D1A054]  " >Already registered? Go to log in</Link>
               <div className="divider divider-horizontal mx-auto">Or sign in with </div>
               <div className="space-x-4">
               <button className="btn btn-circle btn-outline text-xl text-black border-black">

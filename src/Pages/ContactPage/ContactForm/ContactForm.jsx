@@ -1,13 +1,21 @@
 import { BsFillSendFill } from "react-icons/bs";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
+import { useState } from "react";
 
 const ContactForm = () => {
+  const [file,setFile] = useState();
+  const handleUploadImg = e =>{
+    setFile(URL.createObjectURL(e.target.files[0]))
+  }
+  console.log(file)
   return (
     <section className="my-28 space-y-10">
       <SectionTitle
         Heading={"contact form"}
         subHeading={"send us a message"}
       ></SectionTitle>
+      <input type="file" onChange={handleUploadImg} name="" id="" />
+      <img src={file} alt="" />
       <div className="card bg-[#F3F3F3] w-full rounded-none  px-5 py-8" >
         <form className="card-body ">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-3">
