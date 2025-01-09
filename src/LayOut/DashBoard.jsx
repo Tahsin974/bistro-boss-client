@@ -113,7 +113,7 @@ const DashBoard = () => {
       icon: <FaShoppingBag size={25}></FaShoppingBag>,
     },
     {
-      path: "FaEnvelope",
+      path: "/contact",
       label: "contact",
       icon: <FaEnvelope size={25}></FaEnvelope>,
     },

@@ -14,8 +14,6 @@ const ContactForm = () => {
         Heading={"contact form"}
         subHeading={"send us a message"}
       ></SectionTitle>
-      <input type="file" onChange={handleUploadImg} name="" id="" />
-      <img src={file} alt="" />
       <div className="card bg-[#F3F3F3] w-full rounded-none  px-5 py-8" >
         <form className="card-body ">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-3">
