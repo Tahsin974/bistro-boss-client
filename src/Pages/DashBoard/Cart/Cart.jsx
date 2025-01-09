@@ -1,8 +1,8 @@
 import { FaTrashAlt } from "react-icons/fa";
-import SectionTitle from "../../Components/SectionTitle/SectionTitle";
-import useCart from "../../Hooks/useCart";
+import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
+import useCart from "../../../Hooks/useCart";
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const Cart = () => {
     const {cart,refetch} = useCart();

@@ -6,7 +6,7 @@ import { Link } from "react-router";
 const SideBar = ({menuItems,pages}) => {
     const [open,setOpen] = useState(true)
     return (
-        <div className={`h-screen w-72 bg-[#D1A054] p-5 flex flex-col ${!open && 'w-[70px]'} duration-500 overflow-x-auto`}>
+        <div className={`h-screen w-80 bg-[#D1A054] p-5 flex flex-col ${!open && 'w-[70px]'} duration-500 overflow-x-auto`}>
             {/* Header */}
             <div className="flex justify-between items-center">
                 <div className={`${!open && 'hidden'}`}>
@@ -31,12 +31,15 @@ const SideBar = ({menuItems,pages}) => {
                         
                     <li
                     
-                    className={`py-2 cinzel-light ${item.class}`}
+                    className={`py-2 cinzel-light`}
                     >
                         <Link
                         to={item.path}
                         className="flex gap-x-4 items-center text-xl uppercase"
-                        ><div>{item.icon}</div> <p className={` ${!open && ' overflow-hidden'} duration-300`}>{item.label}</p></Link>
+                        ><div>{item.icon}</div> <p className={` ${!open && ' overflow-hidden'} duration-300 items-center`}>{item.label} </p>
+                        {item.totalItems ? <div className="badge">{item?.totalItems}</div> : <></>}
+                        
+                        </Link>
                     </li>
                     </div>)
                 }

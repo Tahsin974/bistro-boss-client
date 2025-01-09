@@ -9,8 +9,10 @@ import { Input } from "@nextui-org/react";
 import useAuthContext from "../../../Hooks/useAuthContext";
 import Swal from "sweetalert2";
 import { useLocation } from "react-router";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 const SignUp = () => {
+  const axiosPublic = useAxiosPublic();
   const {createUser,setUser,setLoading,googleSignIn,updateUserProfile} = useAuthContext();
   const navigate = useNavigate();
   const location = useLocation()
@@ -25,19 +27,40 @@ const SignUp = () => {
       const user = result.user;
       setUser(user)
       setLoading(false)
-      Swal.fire({
-        title: "Sign In Successfully Done",
-        icon: "success",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          
-            navigate( '/home')
-            
-         
-          
-          
+      const userInfo = {
+        name:user.displayName,
+        email:user.email
+      }
+      axiosPublic.post('/users',userInfo)
+      .then(res => {
+        if(res.data.insertedId){
+          console.log('user Added to db')
+          Swal.fire({
+            title: "Sign In Successfully Done",
+            icon: "success",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              
+                navigate( '/home')
+        
+            }
+          });
         }
-      });
+        else{
+          console.log(res.data)
+          Swal.fire({
+            title: "Sign In Successfully Done",
+            icon: "success",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              
+                navigate( '/home')
+        
+            }
+          });
+        }
+      })
+      
     })
   }
   // React Hook Form
@@ -55,17 +78,29 @@ const SignUp = () => {
     setLoading(false)
     updateUserProfile(data.name,data.photoUrl)
     .then(() => {
-      
-      Swal.fire({
-        title: "Account Created Successfully ",
-        icon: "success",
-      }).then((result) => {
-        if (result.isConfirmed) {
-         
-          navigate( '/home')
-            reset()
+
+      const userInfo = {
+        name : data.name,
+        email: data.email
+      }
+      axiosPublic.post('/users',userInfo)
+      .then(res => {
+        if(res.data.insertedId){
+          console.log('user Added to db')
+          Swal.fire({
+            title: "Account Created Successfully ",
+            icon: "success",
+          }).then((result) => {
+            if (result.isConfirmed) {
+             
+              navigate( '/home')
+                reset()
+            }
+          });
         }
-      });
+      })
+      
+      
     })
     
     

@@ -21,6 +21,9 @@ const Menubar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const {user,userLogOut,setUser,setLoading} = useAuthContext();
   const {cart} = useCart()
+  const totalPrice = cart.reduce((total,item)=>{
+    return total + item.price
+},0)
   const handleLogOut = () =>{
     userLogOut()
     .then(()=>{
@@ -52,7 +55,7 @@ const Menubar = () => {
         className="card">
         <div className="card-body">
           <span className="text-lg font-bold">{cart.length} Items</span>
-          <span className="text-info">Subtotal: $999</span>
+          <span className="text-info">total: ${totalPrice}</span>
           <div className="card-actions">
             <Link to='/dashboard/cart'>
             <button className="btn btn-primary btn-block">View cart</button>

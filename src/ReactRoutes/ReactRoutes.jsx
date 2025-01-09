@@ -8,7 +8,9 @@ import Login from "../Pages/LoginPage/Login/Login"
 import SignUp from "../Pages/SignUpPage/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import DashBoard from "../LayOut/DashBoard";
-import Cart from "../Pages/DashBoard/Cart";
+import Cart from "../Pages/DashBoard/Cart/Cart";
+import AllUsers from "../Pages/DashBoard/All-Users/allUsers";
+
 
 
 
@@ -22,6 +24,7 @@ const ReactRoutes = () => {
         </PrivateRoute>}>
         <Route path="/dashboard" element={<Cart></Cart>} />  
         <Route path="/dashboard/cart" element={<Cart></Cart>} />  
+        <Route path="/dashboard/all-users" element={<AllUsers></AllUsers>} />  
         
         </Route>
       <Route path="/" element={<LayOut></LayOut>}>

@@ -1,4 +1,5 @@
 import {
+  
   FaCalendarAlt,
   FaCreditCard,
   FaEnvelope,
@@ -7,6 +8,7 @@ import {
   FaPlus,
   FaShoppingBag,
   FaShoppingCart,
+  FaUtensils,
 } from "react-icons/fa";
 
 // bg-[#D1A054]
@@ -14,8 +16,10 @@ import {
 import { Link, Outlet } from "react-router";
 import DynamicTitle from "../Components/DynamicTitle/DynamicTitle";
 import useAuthContext from "../Hooks/useAuthContext";
-import useCart from "../Hooks/useCart";
+// import useCart from "../Hooks/useCart";
 import SideBar from "../Components/SideBar/SideBar";
+import { FaBook, FaUsers } from "react-icons/fa6";
+import useCart from "../Hooks/useCart";
 
 const DashBoard = () => {
   const { cart } = useCart();
@@ -26,7 +30,38 @@ const DashBoard = () => {
       setLoading(false);
     });
   };
-  const menuItems = [
+
+  const isAdmin =true;
+  const adminMenuItems = [
+    {
+      path: "/dashboard/admin-home",
+      label: "Admin Home",
+      icon: <FaHome size={25} />,
+    },
+    {
+      path: "/dashboard/add-items",
+      label: "Add Items",
+      icon: <FaUtensils size={25} />,
+    },
+    {
+      path: "/dashboard/manage-items",
+      label: "Manage Items",
+      icon: <FaList size={25} />,
+    },
+    {
+      path: "/dashboard/cart",
+      label: "Manage Bookings",
+      icon: <FaBook size={25} />,
+    },
+    {
+      path: "/dashboard/all-users",
+      label: "All Users",
+      icon: <FaUsers size={25}/>,
+    },
+
+
+  ]
+  const userMenuItems = [
     {
       path: "/dashboard/user-home",
       label: "User Home",
@@ -46,6 +81,7 @@ const DashBoard = () => {
       path: "/dashboard/cart",
       label: "My Cart",
       icon: <FaShoppingCart size={25} />,
+      totalItems: cart.length
     },
     {
       path: "/dashboard/add-review",
@@ -58,6 +94,8 @@ const DashBoard = () => {
       icon: <FaList size={25}></FaList>,
     },
   ];
+
+  // Shared Nav links
   const pages = [
     {
       path: "/home",
@@ -80,16 +118,14 @@ const DashBoard = () => {
       icon: <FaEnvelope size={25}></FaEnvelope>,
     },
   ];
-  // const navs = <>
 
-  //           <hr className="my-5" />
-  // </>
+  const MenuNavs = isAdmin ? adminMenuItems : userMenuItems
   return (
     <div className="bg-[#F3F3F3]">
       <DynamicTitle pageName={"Dashboard"}></DynamicTitle>
       <div className="flex">
         <div className="lg:flex hidden">
-          <SideBar menuItems={menuItems} pages={pages}></SideBar>
+          <SideBar menuItems={MenuNavs} pages={pages}></SideBar>
         </div>
         <div className="flex-1 ">
           <div className="drawer">
@@ -129,7 +165,7 @@ const DashBoard = () => {
                       <div className="w-10 rounded-full">
                         <img
                           alt="Tailwind CSS Navbar component"
-                          src={user?.photoUrl}
+                          src={user?.photoURL}
                         />
                       </div>
                     </div>
@@ -177,7 +213,7 @@ const DashBoard = () => {
                 <p className="font-bold text-center mt-4 text-gray-600">Menu</p>
             <ul className="my-2 flex-1">
                 {
-                    menuItems.map(item => <div key={item.index}>
+                    MenuNavs.map(item => <div key={item.index}>
                         
                     <li
                     
