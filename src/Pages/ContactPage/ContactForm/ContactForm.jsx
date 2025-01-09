@@ -1,13 +1,7 @@
 import { BsFillSendFill } from "react-icons/bs";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
-import { useState } from "react";
-
 const ContactForm = () => {
-  const [file,setFile] = useState();
-  const handleUploadImg = e =>{
-    setFile(URL.createObjectURL(e.target.files[0]))
-  }
-  console.log(file)
+
   return (
     <section className="my-28 space-y-10">
       <SectionTitle
