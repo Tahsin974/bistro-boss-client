@@ -13,17 +13,16 @@ import { useEffect, useState } from "react";
 import { FaQuoteLeft } from "react-icons/fa";
 import Rating from "react-rating";
 import { IoMdStar, IoMdStarHalf, IoMdStarOutline } from "react-icons/io";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 const Testimonials = () => {
   const [reviews, setReviews] = useState([]);
-  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
     useEffect(() => {
-    axiosSecure.get('/review').then((res) => {
-      console.log(res.data);
+    axiosPublic.get('/review').then((res) => {
       setReviews(res.data);
     });
-  }, []);
+  }, [axiosPublic]);
   return (
     <section className="my-28 space-y-10">
       <SectionTitle

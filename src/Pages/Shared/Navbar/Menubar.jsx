@@ -13,13 +13,14 @@ import {
 } from "@nextui-org/react";
 import { useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import useAuthContext from "../../../Hooks/useAuthContext";
 import useCart from "../../../Hooks/useCart";
 
 const Menubar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const {user,userLogOut,setUser,setLoading} = useAuthContext();
+  const navigate = useNavigate()
   const {cart} = useCart()
   const totalPrice = cart.reduce((total,item)=>{
     return total + item.price
@@ -29,6 +30,8 @@ const Menubar = () => {
     .then(()=>{
       setUser({})
       setLoading(false)
+      navigate('/')
+
     })
   }
   const viewCartButton =<>

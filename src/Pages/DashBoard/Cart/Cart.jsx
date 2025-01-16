@@ -28,7 +28,9 @@ const Cart = () => {
                           Swal.fire({
                 title: "Deleted!",
                 text: "Your item has been deleted.",
-                icon: "success"
+                icon: "success",
+                showConfirmButton: false,
+                timer: 1500,
               });
               refetch()
                     }
@@ -51,7 +53,8 @@ const Cart = () => {
             <h3>Total Price: {totalPrice}</h3>
             <button className="btn bg-[#D1A054] border-[#D1A054] text-white hover:bg-[#bb8c46] hover:border-[#D1A054]">pay</button>
         </div>
-        <div className="overflow-x-auto">
+        {
+          !cart.length == 0 ? <div className="overflow-x-auto">
           <table className="table ">
             {/* head */}
             <thead className="bg-[#D1A054]">
@@ -86,12 +89,26 @@ const Cart = () => {
                     <td>{item.price}</td>
                     <td><button onClick={()=>handleDelete(item._id)} className="btn  btn-sm bg-red-600 hover:bg-red-700 text-white"><FaTrashAlt/></button></td>
                   </tr>)
+
+                  
               }
+
             </tbody>
         
           </table>
 
         </div>
+        :
+        <div className="hero bg-white min-h-full">
+          <div className="hero-content text-center">
+            <div>
+              <h1 className="text-2xl font-bold text-slate-400">
+                You do not have any items
+              </h1>
+            </div>
+          </div>
+        </div>
+        }
       </div>
     </div>
   );

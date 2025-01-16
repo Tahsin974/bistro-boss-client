@@ -38,6 +38,8 @@ const SignUp = () => {
           Swal.fire({
             title: "Sign In Successfully Done",
             icon: "success",
+            showConfirmButton: false,
+            timer: 1500,
           }).then((result) => {
             if (result.isConfirmed) {
               
@@ -51,6 +53,8 @@ const SignUp = () => {
           Swal.fire({
             title: "Sign In Successfully Done",
             icon: "success",
+            showConfirmButton: false,
+            timer: 1500,
           }).then((result) => {
             if (result.isConfirmed) {
               
@@ -90,6 +94,8 @@ const SignUp = () => {
           Swal.fire({
             title: "Account Created Successfully ",
             icon: "success",
+            showConfirmButton: false,
+            timer: 1500,
           }).then((result) => {
             if (result.isConfirmed) {
              

@@ -1,5 +1,6 @@
 import { BsFillSendFill } from "react-icons/bs";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
+import GradientButton from "../../../Components/Button/gradientButton";
 const ContactForm = () => {
 
   return (
@@ -59,10 +60,9 @@ const ContactForm = () => {
           </div>
           </div>
           <div className="form-control mt-6 mx-auto ">
-            <button className="btn bg-gradient-to-r from-[#835D23] to-[#B58130] rounded-none text-white border-0">Send Message
+            <GradientButton buttonValue={'Send Message'}>
             <BsFillSendFill />
-
-            </button>
+            </GradientButton>
           </div>
         </form>
       </div>

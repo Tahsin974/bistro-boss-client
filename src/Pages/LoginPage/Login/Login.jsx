@@ -9,8 +9,10 @@ import { useForm } from "react-hook-form";
 import { Input } from "@nextui-org/react";
 import useAuthContext from "../../../Hooks/useAuthContext";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 const Login = () => {
+  const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const location = useLocation();
   console.log(location)
@@ -26,16 +28,43 @@ const Login = () => {
       const user = result.user;
       setUser(user)
       setLoading(false)
-      Swal.fire({
-        title: "Login Successfully Done",
-        icon: "success",
-      }).then((result) => {
-        if (result.isConfirmed) {
-         
-          navigate(location.state || '/home',{replace:true})
-          reset()
-        }
-      });
+      const userInfo = {
+              name:user.displayName,
+              email:user.email
+            }
+            axiosPublic.post('/users',userInfo)
+            .then(res => {
+              if(res.data.insertedId){
+                console.log('user Added to db')
+                Swal.fire({
+                  title: "Log In Successfully Done",
+                  icon: "success",
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    
+                    navigate(location.state || '/home',{replace:true})
+                    reset()
+              
+                  }
+                });
+              }
+              else{
+                console.log(res.data)
+                Swal.fire({
+                  title: "Login Successfully Done",
+                  icon: "success",
+                  
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    
+                    navigate(location.state || '/home',{replace:true})
+                      reset()
+              
+                  }
+                });
+              }
+            })
+      
     })
   }
   // React Hook Form
@@ -49,6 +78,8 @@ const Login = () => {
       Swal.fire({
         title: "Login Successfully Done",
         icon: "success",
+        showConfirmButton: false,
+        timer: 1500,
       }).then((result) => {
         if (result.isConfirmed) {
          

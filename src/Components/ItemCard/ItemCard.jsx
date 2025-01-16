@@ -1,8 +1,8 @@
 import Swal from "sweetalert2";
 import useAuthContext from "../../Hooks/useAuthContext";
 import { useLocation, useNavigate } from "react-router";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useCart from "../../Hooks/useCart";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const ItemCard = ({ item,isPrice }) => {
   const { name, image, recipe,price,_id } = item;

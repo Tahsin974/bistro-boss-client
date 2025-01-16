@@ -20,6 +20,7 @@ import useAuthContext from "../Hooks/useAuthContext";
 import SideBar from "../Components/SideBar/SideBar";
 import { FaBook, FaUsers } from "react-icons/fa6";
 import useCart from "../Hooks/useCart";
+import useAdmin from "../Hooks/useAdmin";
 
 const DashBoard = () => {
   const { cart } = useCart();
@@ -30,8 +31,7 @@ const DashBoard = () => {
       setLoading(false);
     });
   };
-
-  const isAdmin =true;
+  const [isAdmin] =useAdmin();
   const adminMenuItems = [
     {
       path: "/dashboard/admin-home",
@@ -81,7 +81,7 @@ const DashBoard = () => {
       path: "/dashboard/cart",
       label: "My Cart",
       icon: <FaShoppingCart size={25} />,
-      totalItems: cart.length
+      totalItems: cart.length || '0'
     },
     {
       path: "/dashboard/add-review",
@@ -190,7 +190,7 @@ const DashBoard = () => {
                 </div>
               </div>
               {/* Page content here */}
-              <div>
+              <div className="p-5">
                 <Outlet></Outlet>
               </div>
             </div>
@@ -217,7 +217,7 @@ const DashBoard = () => {
                         
                     <li
                     
-                    className={`py-2 cinzel-light ${item.class}`}
+                    className={`py-2 cinzel-light`}
                     >
                         <Link
                         to={item.path}

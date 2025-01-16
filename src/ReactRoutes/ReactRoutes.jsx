@@ -10,37 +10,60 @@ import PrivateRoute from "./PrivateRoute";
 import DashBoard from "../LayOut/DashBoard";
 import Cart from "../Pages/DashBoard/Cart/Cart";
 import AllUsers from "../Pages/DashBoard/All-Users/allUsers";
+import AdminRoute from "./AdminRoute";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import AddItems from "../Pages/DashBoard/Add-Items/AddItems";
+import ManageItems from "../Pages/DashBoard/Manage-Items/ManageItems";
+import UpdateItem from "../Pages/DashBoard/Update-Item/UpdateItem";
 
 
 
 
 const ReactRoutes = () => {
+  
   return (
     <div>
       <Routes>
      
         <Route path="/dashboard" element={<PrivateRoute>
-          <DashBoard></DashBoard>
+          <DashBoard/>
         </PrivateRoute>}>
-        <Route path="/dashboard" element={<Cart></Cart>} />  
-        <Route path="/dashboard/cart" element={<Cart></Cart>} />  
-        <Route path="/dashboard/all-users" element={<AllUsers></AllUsers>} />  
-        
+        <Route path="/dashboard" element={<Cart/>} />  
+        {/* Normal User Route*/}
+        <Route path="cart" element={<Cart/>} /> 
+
+
+         {/*Admin Route  */}
+        <Route path="all-users" element={<AdminRoute>
+          <AllUsers/>
+        </AdminRoute>} />  
+        <Route path="add-items" element={<AdminRoute>
+          <AddItems/>
+        </AdminRoute>} /> 
+        <Route path="manage-items" element={<AdminRoute>
+          <ManageItems/>
+        </AdminRoute>} /> 
+        <Route path="update-item/:id" element={<AdminRoute>
+          <UpdateItem/>
+        </AdminRoute>} /> 
         </Route>
-      <Route path="/" element={<LayOut></LayOut>}>
-    <Route path="/" element={<Home></Home>} />  
-    <Route path="home" element={<Home></Home>} />  
-    <Route path="menu" element={<Menu></Menu>} />  
+      <Route path="/" element={<LayOut/>}>
+    <Route path="/" element={<Home/>} />  
+    <Route path="home" element={<Home/>} />  
+    <Route path="menu" element={<Menu/>} />  
     {/* <Route path="order/:category" element={<PrivateRoute>
       <Order></Order>
     </PrivateRoute>} />   */}
     <Route path="order/:category" element={
-      <Order></Order>
+      <Order/>
     } />  
-    <Route path="contact" element={<Contact></Contact>} />  
-    <Route path="login" element={<Login></Login>} />  
-    <Route path="sign-up" element={<SignUp></SignUp>} />  
+    <Route path="contact" element={<Contact/>} />  
+    <Route path="login" element={<Login/>} />  
+    <Route path="sign-up" element={<SignUp/>} />  
     </Route>
+
+
+    <Route path="*" element={<ErrorPage/>} />
 
       </Routes>
     </div>
