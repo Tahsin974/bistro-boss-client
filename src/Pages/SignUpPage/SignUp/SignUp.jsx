@@ -1,40 +1,45 @@
-import { FaEye, FaEyeSlash, FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa6";
+import {
+  FaEye,
+  FaEyeSlash,
+  FaFacebookF,
+  FaGithub,
+  FaGoogle,
+} from "react-icons/fa6";
 import { Link, useNavigate } from "react-router";
 import DynamicTitle from "../../../Components/DynamicTitle/DynamicTitle";
 import bgImg from "../../../assets/others/authentication.png";
 import loginImg from "../../../assets/others/authentication2.png";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { Input } from "@nextui-org/react";
+
 import useAuthContext from "../../../Hooks/useAuthContext";
 import Swal from "sweetalert2";
 import { useLocation } from "react-router";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import { Input } from "@heroui/react";
 
 const SignUp = () => {
   const axiosPublic = useAxiosPublic();
-  const {createUser,setUser,setLoading,googleSignIn,updateUserProfile} = useAuthContext();
+  const { createUser, setUser, setLoading, googleSignIn, updateUserProfile } =
+    useAuthContext();
   const navigate = useNavigate();
-  const location = useLocation()
-  console.log(location)
+  const location = useLocation();
+  console.log(location);
   const [isVisible, setIsVisible] = useState(false);
   const toggleVisibility = () => setIsVisible(!isVisible);
   // Google Sign Up
-  const handleGoogleSignIn = () =>{
-    
-    googleSignIn()
-    .then((result) => {
+  const handleGoogleSignIn = () => {
+    googleSignIn().then((result) => {
       const user = result.user;
-      setUser(user)
-      setLoading(false)
+      setUser(user);
+      setLoading(false);
       const userInfo = {
-        name:user.displayName,
-        email:user.email
-      }
-      axiosPublic.post('/users',userInfo)
-      .then(res => {
-        if(res.data.insertedId){
-          console.log('user Added to db')
+        name: user.displayName,
+        email: user.email,
+      };
+      axiosPublic.post("/users", userInfo).then((res) => {
+        if (res.data.insertedId) {
+          console.log("user Added to db");
           Swal.fire({
             title: "Sign In Successfully Done",
             icon: "success",
@@ -42,14 +47,11 @@ const SignUp = () => {
             timer: 1500,
           }).then((result) => {
             if (result.isConfirmed) {
-              
-                navigate( '/home')
-        
+              navigate("/home");
             }
           });
-        }
-        else{
-          console.log(res.data)
+        } else {
+          console.log(res.data);
           Swal.fire({
             title: "Sign In Successfully Done",
             icon: "success",
@@ -57,16 +59,13 @@ const SignUp = () => {
             timer: 1500,
           }).then((result) => {
             if (result.isConfirmed) {
-              
-                navigate( '/home')
-        
+              navigate("/home");
             }
           });
         }
-      })
-      
-    })
-  }
+      });
+    });
+  };
   // React Hook Form
   const {
     register,
@@ -75,45 +74,34 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-   createUser(data.email,data.password)
-   .then(result =>{
-    const user = result.user;
-    setUser(user)
-    setLoading(false)
-    updateUserProfile(data.name,data.photoUrl)
-    .then(() => {
-
-      const userInfo = {
-        name : data.name,
-        email: data.email
-      }
-      axiosPublic.post('/users',userInfo)
-      .then(res => {
-        if(res.data.insertedId){
-          console.log('user Added to db')
-          Swal.fire({
-            title: "Account Created Successfully ",
-            icon: "success",
-            showConfirmButton: false,
-            timer: 1500,
-          }).then((result) => {
-            if (result.isConfirmed) {
-             
-              navigate( '/home')
-                reset()
-            }
-          });
-        }
-      })
-      
-      
-    })
-    
-    
-    
-    
-  })
-};
+    createUser(data.email, data.password).then((result) => {
+      const user = result.user;
+      setUser(user);
+      setLoading(false);
+      updateUserProfile(data.name, data.photoUrl).then(() => {
+        const userInfo = {
+          name: data.name,
+          email: data.email,
+        };
+        axiosPublic.post("/users", userInfo).then((res) => {
+          if (res.data.insertedId) {
+            console.log("user Added to db");
+            Swal.fire({
+              title: "Account Created Successfully ",
+              icon: "success",
+              showConfirmButton: false,
+              timer: 1500,
+            }).then((result) => {
+              if (result.isConfirmed) {
+                navigate("/home");
+                reset();
+              }
+            });
+          }
+        });
+      });
+    });
+  };
   return (
     <div>
       <DynamicTitle pageName="Sign Up"></DynamicTitle>
@@ -181,7 +169,7 @@ const SignUp = () => {
                 <label className="label">
                   <span className="label-text font-semibold">Password</span>
                 </label>
-                
+
                 <Input
                   placeholder="Enter your password"
                   className="input input-bordered  bg-white text-black p-1"
@@ -193,12 +181,9 @@ const SignUp = () => {
                       aria-label="toggle password visibility"
                     >
                       {isVisible ? (
-                        
-                        <FaEye className="text-2xl text-default-400 cursor-pointer"/>
-
+                        <FaEye className="text-2xl text-default-400 cursor-pointer" />
                       ) : (
-                        <FaEyeSlash className="text-2xl text-default-400 cursor-pointer"/>
-
+                        <FaEyeSlash className="text-2xl text-default-400 cursor-pointer" />
                       )}
                     </button>
                   }
@@ -209,49 +194,62 @@ const SignUp = () => {
                     maxLength: 10,
                     pattern: /^(?=.*[A-Z].*[A-Z])(?=.*[a-z])(?=.*\d).+$/,
                   })}
-                  
                 />
-                
-                {errors.password?.type == 'required' && (
-                  <span className="text-red-600">Password is required</span> || <span className="text-green-600">Password Accepted</span>
+
+                {errors.password?.type == "required" &&
+                  ((
+                    <span className="text-red-600">Password is required</span>
+                  ) || (
+                    <span className="text-green-600">Password Accepted</span>
+                  ))}
+                {errors.password?.type == "minLength" && (
+                  <span className="text-red-600">
+                    Password must be 6 characters
+                  </span>
                 )}
-                {errors.password?.type == 'minLength' && (
-                  <span className="text-red-600">Password must be 6 characters</span> 
-                ) }
-                {errors.password?.type == 'maxLength' && (
-                  <span className="text-red-600">Password must be less then 10 characters</span> 
-                ) }
-                {errors.password?.type == 'pattern' && (
-                  <span className="text-red-600">Password must have atleast two uppercase letters(A-Z) one lowercase letter(a-z) one digit(0-9)</span> 
-                ) }
-                 
-                
+                {errors.password?.type == "maxLength" && (
+                  <span className="text-red-600">
+                    Password must be less then 10 characters
+                  </span>
+                )}
+                {errors.password?.type == "pattern" && (
+                  <span className="text-red-600">
+                    Password must have atleast two uppercase letters(A-Z) one
+                    lowercase letter(a-z) one digit(0-9)
+                  </span>
+                )}
               </div>
               <div className="form-control my-6 ">
                 <button className="btn bg-[#D1A054] hover:bg-[#b88e4f] text-white border-0">
                   Sign Up
                 </button>
               </div>
-              
             </form>
             <div className="text-center">
-              <Link to='/login'className="link cursor-pointer text-[#D1A054]  " >Already registered? Go to log in</Link>
-              <div className="divider divider-horizontal mx-auto">Or sign in with </div>
+              <Link
+                to="/login"
+                className="link cursor-pointer text-[#D1A054]  "
+              >
+                Already registered? Go to log in
+              </Link>
+              <div className="divider divider-horizontal mx-auto">
+                Or sign in with{" "}
+              </div>
               <div className="space-x-4">
-              <button className="btn btn-circle btn-outline text-xl text-black border-black">
-              <FaFacebookF />
-
-              </button>
-              <button onClick={handleGoogleSignIn} className="btn btn-circle btn-outline text-xl text-black border-black">
-              <FaGoogle />
-
-              </button>
-              <button className="btn btn-circle btn-outline text-xl text-black border-black">
-              <FaGithub />
-
-              </button>
+                <button className="btn btn-circle btn-outline text-xl text-black border-black">
+                  <FaFacebookF />
+                </button>
+                <button
+                  onClick={handleGoogleSignIn}
+                  className="btn btn-circle btn-outline text-xl text-black border-black"
+                >
+                  <FaGoogle />
+                </button>
+                <button className="btn btn-circle btn-outline text-xl text-black border-black">
+                  <FaGithub />
+                </button>
               </div>
-              </div>
+            </div>
           </div>
         </div>
       </div>
