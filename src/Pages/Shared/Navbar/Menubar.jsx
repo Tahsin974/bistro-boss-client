@@ -136,7 +136,7 @@ const Menubar = () => {
               <DropdownMenu
                 aria-label="Profile Actions"
                 variant="flat"
-                className="bg-neutral-600 text-white max-w-56 "
+                className="bg-white text-black max-w-56 "
               >
                 <DropdownItem
                   key="profile"
