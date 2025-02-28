@@ -85,10 +85,10 @@ const Menubar = () => {
     </>
   );
   return (
-    <div className="sticky top-0 z-10 bg-neutral-800">
+    <div className="sticky top-0 z-10  ">
       <Navbar
         onMenuOpenChange={setIsMenuOpen}
-        className="items-center lg:fixed lg:z-10 md:fixed md:z-10  lg:bg-opacity-40 lg:bg-black md:bg-opacity-40 md:bg-black  text-white max-w-[1200px] mx-auto "
+        className="items-center bg-neutral-900  text-white max-w-[1200px] mx-auto "
       >
         <NavbarContent>
           <NavbarMenuToggle
