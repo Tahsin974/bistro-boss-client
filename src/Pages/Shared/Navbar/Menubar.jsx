@@ -16,12 +16,14 @@ import {
   NavbarMenu,
   NavbarMenuToggle,
 } from "@heroui/react";
+import useAdmin from "../../../Hooks/useAdmin";
 
 const Menubar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, userLogOut, setUser, setLoading } = useAuthContext();
   const navigate = useNavigate();
   const { cart } = useCart();
+  const [isAdmin] = useAdmin();
   const handleLogOut = () => {
     userLogOut().then(() => {
       setUser({});
@@ -58,14 +60,16 @@ const Menubar = () => {
           CONTACT US
         </Link>
       </NavbarItem>
-      <NavbarItem>
-        <Link
-          to="/dashboard"
-          className="text-white font-light hover:text-orange-500"
-        >
-          DASHBOARD
-        </Link>
-      </NavbarItem>
+      {user?.email && (
+        <NavbarItem>
+          <Link
+            to={isAdmin ? "/dashboard/admin-home" : "/dashboard/user-home"}
+            className="text-white font-light hover:text-orange-500"
+          >
+            DASHBOARD
+          </Link>
+        </NavbarItem>
+      )}
       <NavbarItem>
         <Link
           to="/menu"
@@ -84,6 +88,7 @@ const Menubar = () => {
       </NavbarItem>
     </>
   );
+  console.log(isAdmin);
   return (
     <div className="sticky top-0 z-10  ">
       <Navbar

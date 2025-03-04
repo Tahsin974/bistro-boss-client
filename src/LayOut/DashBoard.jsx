@@ -1,5 +1,4 @@
 import {
-  
   FaCalendarAlt,
   FaCreditCard,
   FaEnvelope,
@@ -16,7 +15,6 @@ import {
 import { Link, Outlet } from "react-router";
 import DynamicTitle from "../Components/DynamicTitle/DynamicTitle";
 import useAuthContext from "../Hooks/useAuthContext";
-// import useCart from "../Hooks/useCart";
 import SideBar from "../Components/SideBar/SideBar";
 import { FaBook, FaUsers } from "react-icons/fa6";
 import useCart from "../Hooks/useCart";
@@ -31,7 +29,7 @@ const DashBoard = () => {
       setLoading(false);
     });
   };
-  const [isAdmin] =useAdmin();
+  const [isAdmin] = useAdmin();
   const adminMenuItems = [
     {
       path: "/dashboard/admin-home",
@@ -56,11 +54,9 @@ const DashBoard = () => {
     {
       path: "/dashboard/all-users",
       label: "All Users",
-      icon: <FaUsers size={25}/>,
+      icon: <FaUsers size={25} />,
     },
-
-
-  ]
+  ];
   const userMenuItems = [
     {
       path: "/dashboard/user-home",
@@ -81,7 +77,7 @@ const DashBoard = () => {
       path: "/dashboard/cart",
       label: "My Cart",
       icon: <FaShoppingCart size={25} />,
-      totalItems: cart.length || '0'
+      totalItems: cart.length || "0",
     },
     {
       path: "/dashboard/add-review",
@@ -119,7 +115,7 @@ const DashBoard = () => {
     },
   ];
 
-  const MenuNavs = isAdmin ? adminMenuItems : userMenuItems
+  const MenuNavs = isAdmin ? adminMenuItems : userMenuItems;
   return (
     <div className="bg-[#F3F3F3]">
       <DynamicTitle pageName={"Dashboard"}></DynamicTitle>
@@ -200,50 +196,46 @@ const DashBoard = () => {
                 aria-label="close sidebar"
                 className="drawer-overlay"
               ></label>
-              
+
               <div className="menu bg-[#D1A054] min-h-full w-80 p-4">
-              <h2 className="text-2xl "><span className="cinzel-bold">BISTRO BOSS</span>
-                <br />
-                <span
-                  className="cinzel-light text-lg"
-                >
-                  RESTUARANT
-                </span></h2>
+                <h2 className="text-2xl ">
+                  <span className="cinzel-bold">BISTRO BOSS</span>
+                  <br />
+                  <span className="cinzel-light text-lg">RESTUARANT</span>
+                </h2>
                 {/* Sidebar content here */}
                 <p className="font-bold text-center mt-4 text-gray-600">Menu</p>
-            <ul className="my-2 flex-1">
-                {
-                    MenuNavs.map(item => <div key={item.index}>
-                        
-                    <li
-                    
-                    className={`py-2 cinzel-light`}
-                    >
+                <ul className="my-2 flex-1">
+                  {MenuNavs.map((item) => (
+                    <div key={item.index}>
+                      <li className={`py-2 cinzel-light`}>
                         <Link
-                        to={item.path}
-                        className="flex gap-x-4 items-center text-lg uppercase"
-                        ><div>{item.icon}</div> <p>{item.label}</p></Link>
-                    </li>
-                    </div>)
-                }
-            </ul>
-            <p className="font-bold text-center mt-4 text-gray-600">Pages</p>
-            <ul className="my-2 flex-1">
-                {
-                    pages.map(item => <div key={item.index}>
-                        
-                    <li
-                    
-                    className={`py-2 cinzel-light ${item.class}`}
-                    >
+                          to={item.path}
+                          className="flex gap-x-4 items-center text-lg uppercase"
+                        >
+                          <div>{item.icon}</div> <p>{item.label}</p>
+                        </Link>
+                      </li>
+                    </div>
+                  ))}
+                </ul>
+                <p className="font-bold text-center mt-4 text-gray-600">
+                  Pages
+                </p>
+                <ul className="my-2 flex-1">
+                  {pages.map((item) => (
+                    <div key={item.index}>
+                      <li className={`py-2 cinzel-light ${item.class}`}>
                         <Link
-                        to={item.path}
-                        className="flex gap-x-4 items-center text-lg uppercase"
-                        ><div>{item.icon}</div> <p >{item.label}</p></Link>
-                    </li>
-                    </div>)
-                }
-            </ul>
+                          to={item.path}
+                          className="flex gap-x-4 items-center text-lg uppercase"
+                        >
+                          <div>{item.icon}</div> <p>{item.label}</p>
+                        </Link>
+                      </li>
+                    </div>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
