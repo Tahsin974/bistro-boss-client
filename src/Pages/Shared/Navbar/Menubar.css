@@ -1,0 +1,10 @@
+:where(
+    .menu li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title)
+  ):not(summary, .active, .btn):focus {
+  color: white !important;
+}
+:where(
+    .menu li:not(.menu-title, .disabled) > *:not(ul, details, .menu-title)
+  ):not(summary, .active, .btn):hover {
+  color: var(--color-orange-500) !important;
+}

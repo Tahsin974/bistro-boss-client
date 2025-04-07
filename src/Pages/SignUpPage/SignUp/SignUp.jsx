@@ -1,32 +1,19 @@
-import {
-  FaEye,
-  FaEyeSlash,
-  FaFacebookF,
-  FaGithub,
-  FaGoogle,
-} from "react-icons/fa6";
+import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa6";
 import { Link, useNavigate } from "react-router";
 import DynamicTitle from "../../../Components/DynamicTitle/DynamicTitle";
 import bgImg from "../../../assets/others/authentication.png";
 import loginImg from "../../../assets/others/authentication2.png";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
-
 import useAuthContext from "../../../Hooks/useAuthContext";
 import Swal from "sweetalert2";
-import { useLocation } from "react-router";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
-import { Input } from "@heroui/react";
 
 const SignUp = () => {
   const axiosPublic = useAxiosPublic();
   const { createUser, setUser, setLoading, googleSignIn, updateUserProfile } =
     useAuthContext();
   const navigate = useNavigate();
-  const location = useLocation();
-  console.log(location);
-  const [isVisible, setIsVisible] = useState(false);
-  const toggleVisibility = () => setIsVisible(!isVisible);
+
   // Google Sign Up
   const handleGoogleSignIn = () => {
     googleSignIn().then((result) => {
@@ -122,108 +109,89 @@ const SignUp = () => {
           </div>
           <div className="card bg-none w-full max-w-sm shrink-0 ">
             <h3 className="text-3xl font-bold text-center">Sign Up</h3>
-            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-semibold">Name</span>
-                </label>
-                <input
-                  type="text"
-                  {...register("name", { required: true })}
-                  placeholder="Enter Your Name"
-                  className="input input-bordered  bg-white text-black"
-                />
-                {errors.name && (
-                  <span className="text-red-600">Name is required</span>
-                )}
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-semibold">Photo Url</span>
-                </label>
-                <input
-                  type="url"
-                  {...register("photoUrl", { required: true })}
-                  placeholder="Enter Photo Url"
-                  className="input input-bordered  bg-white text-black"
-                />
-                {errors.photoUrl && (
-                  <span className="text-red-600">Photo Url is required</span>
-                )}
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-semibold">Email</span>
-                </label>
-                <input
-                  type="email"
-                  {...register("email", { required: true })}
-                  placeholder="Enter Your Email"
-                  className="input input-bordered  bg-white text-black"
-                />
-                {errors.email && (
-                  <span className="text-red-600">Email is required</span>
-                )}
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-semibold">Password</span>
-                </label>
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="fieldset card-body"
+            >
+              <label className="fieldset-label">
+                <span className="font-semibold">Name</span>
+              </label>
+              <input
+                type="text"
+                {...register("name", { required: true })}
+                placeholder="Enter Your Name"
+                className="input w-full  bg-white text-black"
+              />
+              {errors.name && (
+                <span className="text-red-600">Name is required</span>
+              )}
 
-                <Input
-                  placeholder="Enter your password"
-                  className="input input-bordered  bg-white text-black p-1"
-                  endContent={
-                    <button
-                      className="focus:outline-none"
-                      type="button"
-                      onClick={toggleVisibility}
-                      aria-label="toggle password visibility"
-                    >
-                      {isVisible ? (
-                        <FaEye className="text-2xl text-default-400 cursor-pointer" />
-                      ) : (
-                        <FaEyeSlash className="text-2xl text-default-400 cursor-pointer" />
-                      )}
-                    </button>
-                  }
-                  type={isVisible ? "text" : "password"}
-                  {...register("password", {
-                    required: true,
-                    minLength: 6,
-                    maxLength: 10,
-                    pattern: /^(?=.*[A-Z].*[A-Z])(?=.*[a-z])(?=.*\d).+$/,
-                  })}
-                />
+              <label className="fieldset-label">
+                <span className="font-semibold">Photo Url</span>
+              </label>
+              <input
+                type="url"
+                {...register("photoUrl", { required: true })}
+                placeholder="Enter Photo Url"
+                className="input w-full  bg-white text-black"
+              />
+              {errors.photoUrl && (
+                <span className="text-red-600">Photo Url is required</span>
+              )}
 
-                {errors.password?.type == "required" &&
-                  ((
-                    <span className="text-red-600">Password is required</span>
-                  ) || (
-                    <span className="text-green-600">Password Accepted</span>
-                  ))}
-                {errors.password?.type == "minLength" && (
-                  <span className="text-red-600">
-                    Password must be 6 characters
-                  </span>
-                )}
-                {errors.password?.type == "maxLength" && (
-                  <span className="text-red-600">
-                    Password must be less then 10 characters
-                  </span>
-                )}
-                {errors.password?.type == "pattern" && (
-                  <span className="text-red-600">
-                    Password must have atleast two uppercase letters(A-Z) one
-                    lowercase letter(a-z) one digit(0-9)
-                  </span>
-                )}
-              </div>
-              <div className="form-control my-6 ">
-                <button className="btn bg-[#D1A054] hover:bg-[#b88e4f] text-white border-0">
-                  Sign Up
-                </button>
-              </div>
+              <label className="fieldset-label">
+                <span className="font-semibold">Email</span>
+              </label>
+              <input
+                type="email"
+                {...register("email", { required: true })}
+                placeholder="Enter Your Email"
+                className="input w-full  bg-white text-black"
+              />
+              {errors.email && (
+                <span className="text-red-600">Email is required</span>
+              )}
+
+              <label className="fieldset-label">
+                <span className="font-semibold">Password</span>
+              </label>
+
+              <input
+                placeholder="Enter your password"
+                className="input w-full  bg-white text-black"
+                type="password"
+                {...register("password", {
+                  required: true,
+                  minLength: 6,
+                  maxLength: 10,
+                  pattern: /^(?=.*[A-Z].*[A-Z])(?=.*[a-z])(?=.*\d).+$/,
+                })}
+              />
+
+              {errors.password?.type == "required" &&
+                (<span className="text-red-600">Password is required</span> || (
+                  <span className="text-green-600">Password Accepted</span>
+                ))}
+              {errors.password?.type == "minLength" && (
+                <span className="text-red-600">
+                  Password must be 6 characters
+                </span>
+              )}
+              {errors.password?.type == "maxLength" && (
+                <span className="text-red-600">
+                  Password must be less then 10 characters
+                </span>
+              )}
+              {errors.password?.type == "pattern" && (
+                <span className="text-red-600">
+                  Password must have atleast two uppercase letters(A-Z) one
+                  lowercase letter(a-z) one digit(0-9)
+                </span>
+              )}
+
+              <button className="btn bg-[#D1A054] hover:bg-[#b88e4f] text-white border-0">
+                Sign Up
+              </button>
             </form>
             <div className="text-center">
               <Link

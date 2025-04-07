@@ -12,7 +12,7 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ap
 const AddItems = () => {
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
-  const { register, handleSubmit,reset } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const onSubmit = async (data) => {
     console.log(data);
     // image upload in imgbb
@@ -33,7 +33,7 @@ const AddItems = () => {
       };
       const menuRes = await axiosSecure.post("/menu", menuItem);
       if (menuRes.data.insertedId) {
-        reset()
+        reset();
         Swal.fire({
           icon: "success",
           title: `${data.name} has been added`,
@@ -41,37 +41,36 @@ const AddItems = () => {
           timer: 1500,
         });
       }
-    } 
-    
+    }
 
     // console.log(res.data)
   };
   return (
     <div>
       <SectionTitle Heading={"ADD AN ITEM"} subHeading={"What's new?"} />
-      <div className="card bg-white w-full rounded  my-10 mx-2 ">
-        <form onSubmit={handleSubmit(onSubmit)} className="card-body ">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-3">
-            <div className="form-control lg:col-span-2 md:col-span-2">
-              <label className="label">
-                <span className="label-text font-semibold">Recipe name*</span>
+      <div className="card bg-white w-full rounded  my-10 mx-2 p-3">
+        <form onSubmit={handleSubmit(onSubmit)} className="fieldset card-body ">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+            <div className=" lg:col-span-2 md:col-span-2">
+              <label className="fieldset-label mb-3">
+                <span className="font-semibold">Recipe name*</span>
               </label>
               <input
                 type="text"
                 placeholder="Enter Recipe Name"
-                className="input input-bordered  bg-white text-black"
+                className="input xl:input-xl lg:input-lg md:input-md sm:input-sm input-xs w-full  bg-white text-black"
                 {...register("name")}
                 required
               />
             </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text font-semibold">Category*</span>
+            <div className="">
+              <label className="fieldset-label mb-3">
+                <span className="font-semibold">Category*</span>
               </label>
               <select
                 defaultValue="default"
                 {...register("category")}
-                className="select select-bordered bg-white text-black"
+                className="select xl:select-xl lg:select-lg md:select-md sm:select-sm select-xs w-full  bg-white text-black"
               >
                 <option value="default" disabled>
                   Select A Category
@@ -84,42 +83,40 @@ const AddItems = () => {
                 <option value="offered">Offer</option>
               </select>
             </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text font-semibold">Price*</span>
+            <div className="">
+              <label className="fieldset-label mb-3">
+                <span className="font-semibold">Price*</span>
               </label>
               <input
                 type="number"
                 placeholder="Enter Price"
-                className="input input-bordered  bg-white text-black"
+                className="input xl:input-xl lg:input-lg md:input-md sm:input-sm input-xs w-full  bg-white text-black"
                 {...register("price")}
                 required
               />
             </div>
 
-            <div className="form-control lg:col-span-2 md:col-span-2">
-              <label className="label">
-                <span className="label-text font-semibold">
-                  Recipe Details*
-                </span>
+            <div className=" lg:col-span-2 md:col-span-2">
+              <label className="fieldset-label mb-3">
+                <span className="font-semibold">Recipe Details*</span>
               </label>
               <textarea
                 placeholder="Write Your Recipe Here"
-                className="textarea textarea-bordered textarea-lg  bg-white text-black"
+                className="textarea xl:textarea-xl lg:textarea-lg md:textarea-md sm:textarea-sm textarea-xs w-full h-full  bg-white text-black"
                 {...register("recipe")}
                 required
               />
             </div>
-            <div className="form-control lg:col-span-2 md:col-span-2">
+            <div className=" lg:col-span-2 md:col-span-2 my-6">
               <input
                 type="file"
-                className="file-input  w-full max-w-xs bg-white text-black"
+                className="file-input  xl:file-input-xl lg:file-input-lg md:file-input-md sm:file-input-sm file-input-xs w-full  bg-white text-black"
                 {...register("image")}
                 required
               />
             </div>
           </div>
-          <div className="form-control mt-6 me-auto ">
+          <div className=" mt-6 me-auto ">
             <GradientButton buttonValue={"Add Items"}>
               <FaUtensils />
             </GradientButton>

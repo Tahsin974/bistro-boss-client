@@ -2,13 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import DynamicTitle from "../../../Components/DynamicTitle/DynamicTitle";
 import bgImg from "../../../assets/others/authentication.png";
 import loginImg from "../../../assets/others/authentication2.png";
-import {
-  FaEye,
-  FaEyeSlash,
-  FaFacebookF,
-  FaGithub,
-  FaGoogle,
-} from "react-icons/fa6";
+import { FaFacebookF, FaGithub, FaGoogle } from "react-icons/fa6";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
@@ -19,17 +13,13 @@ import { useForm } from "react-hook-form";
 import useAuthContext from "../../../Hooks/useAuthContext";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
-import { Input } from "@heroui/react";
 
 const Login = () => {
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
   const { userLogin, setUser, setLoading, googleSignIn } = useAuthContext();
-  const [isVisible, setIsVisible] = useState(false);
 
-  const toggleVisibility = () => setIsVisible(!isVisible);
   // Google Sign Up
   const handleGoogleSignIn = () => {
     googleSignIn().then((result) => {
@@ -137,56 +127,42 @@ const Login = () => {
           </div>
           <div className="card bg-none w-full max-w-sm shrink-0 ">
             <h3 className="text-3xl font-bold text-center">Login</h3>
-            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-semibold">Email</span>
-                </label>
-                <input
-                  type="email"
-                  {...register("email", { required: true })}
-                  placeholder="Enter Your Email"
-                  className="input input-bordered  bg-white text-black"
-                />
-                {errors.email && (
-                  <span className="text-red-600">Email is required</span>
-                )}
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text font-semibold">Password</span>
-                </label>
-                <Input
-                  placeholder="Enter your password"
-                  className="input input-bordered  bg-white text-black p-1 mb-2"
-                  endContent={
-                    <button
-                      className="focus:outline-none"
-                      type="button"
-                      onClick={toggleVisibility}
-                      aria-label="toggle password visibility"
-                    >
-                      {isVisible ? (
-                        <FaEye className="text-2xl text-default-400 cursor-pointer" />
-                      ) : (
-                        <FaEyeSlash className="text-2xl text-default-400 cursor-pointer" />
-                      )}
-                    </button>
-                  }
-                  type={isVisible ? "text" : "password"}
-                  {...register("password", {
-                    required: true,
-                    minLength: 6,
-                    maxLength: 10,
-                    pattern: /^(?=.*[A-Z].*[A-Z])(?=.*[a-z])(?=.*\d).+$/,
-                  })}
-                />
-                {errors.password && (
-                  <span className="text-red-600">Password is required</span>
-                )}
-              </div>
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="fieldset card-body"
+            >
+              <label className="fieldset-label">
+                <span className="font-semibold">Email</span>
+              </label>
+              <input
+                type="email"
+                {...register("email", { required: true })}
+                placeholder="Enter Your Email"
+                className="input w-full  bg-white text-black"
+              />
+              {errors.email && (
+                <span className="text-red-600">Email is required</span>
+              )}
 
-              <div className="form-control space-y-2">
+              <label className="fieldset-label">
+                <span className="font-semibold">Password</span>
+              </label>
+              <input
+                placeholder="Enter your password"
+                className="input w-full  bg-white text-black "
+                type="password"
+                {...register("password", {
+                  required: true,
+                  minLength: 6,
+                  maxLength: 10,
+                  pattern: /^(?=.*[A-Z].*[A-Z])(?=.*[a-z])(?=.*\d).+$/,
+                })}
+              />
+              {errors.password && (
+                <span className="text-red-600">Password is required</span>
+              )}
+
+              <div className="my-2">
                 <LoadCanvasTemplate />
                 <input
                   type="text"
@@ -194,19 +170,18 @@ const Login = () => {
                   onBlur={handleValidate}
                   className={
                     disabled
-                      ? "input input-bordered  bg-white text-black "
-                      : "input input-bordered  bg-white text-black border-green-500"
+                      ? "input w-full  bg-white text-black "
+                      : "input w-full  bg-white text-black border-green-500"
                   }
                 />
               </div>
-              <div className="form-control my-6 ">
-                <button
-                  disabled={disabled}
-                  className="btn bg-[#D1A054] hover:bg-[#b88e4f] text-white border-0"
-                >
-                  Login
-                </button>
-              </div>
+
+              <button
+                disabled={disabled}
+                className="btn bg-[#D1A054] hover:bg-[#b88e4f] text-white border-0"
+              >
+                Login
+              </button>
             </form>
             <div className="text-center">
               <Link

@@ -50,7 +50,7 @@ const ItemCard = ({ item, isPrice }) => {
   };
   return (
     <div>
-      <div className="card bg-[#F3F3F3] text-black border rounded-none shadow-xl h-[485px]">
+      <div className="card bg-[#F3F3F3] text-black border border-gray-100 rounded-none shadow-xl h-[485px]">
         <figure>
           <img src={image} alt="Soup" className="w-full" />
           {isPrice && (

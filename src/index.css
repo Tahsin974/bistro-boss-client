@@ -1,32 +1,30 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
+@import "tailwindcss";
+@plugin "daisyui";
 
 /* google fonts */
 
 .cinzel-light {
   font-family: "Cinzel", serif;
   font-optical-sizing: auto;
-  font-weight:300;
+  font-weight: 300;
   font-style: normal;
 }
 .cinzel-medium {
   font-family: "Cinzel", serif;
   font-optical-sizing: auto;
-  font-weight:500;
+  font-weight: 500;
   font-style: normal;
 }
 .cinzel-semibold {
   font-family: "Cinzel", serif;
   font-optical-sizing: auto;
-  font-weight:600;
+  font-weight: 600;
   font-style: normal;
 }
 .cinzel-bold {
   font-family: "Cinzel", serif;
   font-optical-sizing: auto;
-  font-weight:700;
+  font-weight: 700;
   font-style: normal;
 }
 
@@ -60,7 +58,7 @@
   font-style: normal;
 }
 .rye-regular {
-    font-family: "Rye", serif;
-    font-weight: 400;
-    font-style: normal;
-  }
+  font-family: "Rye", serif;
+  font-weight: 400;
+  font-style: normal;
+}

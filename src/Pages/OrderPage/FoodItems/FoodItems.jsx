@@ -2,10 +2,10 @@ import { useState } from "react";
 import useMenu from "../../../Hooks/useMenu";
 
 import "./FoodItems.css";
-import "react-tabs/style/react-tabs.css";
 import { useParams } from "react-router";
-import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import FoodTab from "../FoodTab/FoodTab";
+import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
+
 const FoodItems = () => {
   const [menu] = useMenu();
   const [tabIndex, setTabIndex] = useState(0);
@@ -22,33 +22,42 @@ const FoodItems = () => {
   const drinks = menu.filter((item) => item.category === "drinks");
 
   return (
-    <section className="my-28 space-y-10">
-      <Tabs
-        defaultIndex={initialIndex}
-        onSelect={(index) => setTabIndex(index)}
-      >
-        <TabList className="mb-10">
-          {categories.map((category) => (
-            <Tab key={category}>{category}</Tab>
-          ))}
-        </TabList>
-        <TabPanel>
-          <FoodTab items={salads}></FoodTab>
-        </TabPanel>
-        <TabPanel>
-          <FoodTab items={pizzas}></FoodTab>
-        </TabPanel>
-        <TabPanel>
-          <FoodTab items={soups}></FoodTab>
-        </TabPanel>
-        <TabPanel>
-          <FoodTab items={desserts}></FoodTab>
-        </TabPanel>
-        <TabPanel>
-          <FoodTab items={drinks}></FoodTab>
-        </TabPanel>
-      </Tabs>
-    </section>
+    <>
+      <section className="my-28 space-y-10">
+        <TabGroup
+          defaultIndex={initialIndex}
+          onSelect={(index) => setTabIndex(index)}
+        >
+          <TabList className="flex justify-center gap-4">
+            {categories.map((category, index) => (
+              <Tab
+                key={index}
+                className="btn rounded-none bg-transparent border-0 shadow-none py-1 px-3 text-lg/6 font-semibold text-[#BB8506] focus:outline-none data-[selected]:bg-white/10  data-[hover]:bg-white/5 data-[selected]:border-b-2 data-[selected]:border-t-0 data-[selected]:border-l-0 data-[selected]:border-r-0 data-[selected]:border-[#BB8506] data-[selected]:data-[hover]:bg-white/10 data-[focus]:outline-1 data-[focus]:outline-white"
+              >
+                {category}
+              </Tab>
+            ))}
+          </TabList>
+          <TabPanels className="py-10">
+            <TabPanel>
+              <FoodTab items={salads} />
+            </TabPanel>
+            <TabPanel>
+              <FoodTab items={pizzas} />
+            </TabPanel>
+            <TabPanel>
+              <FoodTab items={soups} />
+            </TabPanel>
+            <TabPanel>
+              <FoodTab items={desserts} />
+            </TabPanel>
+            <TabPanel>
+              <FoodTab items={drinks} />
+            </TabPanel>
+          </TabPanels>
+        </TabGroup>
+      </section>
+    </>
   );
 };
 

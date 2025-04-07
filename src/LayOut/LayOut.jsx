@@ -10,10 +10,18 @@ const LayOut = () => {
     location.pathname.includes("/secret");
   return (
     <div>
-      {noHeaderFooter || <Menubar></Menubar>}
-      <div className="min-h-screen ">
-        <Outlet></Outlet>
-      </div>
+      {noHeaderFooter ? (
+        <div className="min-h-screen ">
+          <Outlet></Outlet>
+        </div>
+      ) : (
+        <Menubar>
+          <div className="min-h-screen ">
+            <Outlet></Outlet>
+          </div>
+        </Menubar>
+      )}
+
       {noHeaderFooter || <Footer></Footer>}
     </div>
   );
