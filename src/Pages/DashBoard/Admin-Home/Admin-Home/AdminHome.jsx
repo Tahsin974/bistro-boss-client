@@ -144,7 +144,7 @@ const AdminHome = () => {
             {/* Bar chart */}
             <div>
               <BarChart
-                width={400}
+                width={300}
                 height={300}
                 data={orderStats}
                 margin={{
@@ -175,7 +175,7 @@ const AdminHome = () => {
             </div>
             {/* Pie chart */}
             <div>
-              <PieChart width={400} height={400}>
+              <PieChart width={300} height={300}>
                 <Pie
                   data={pieChartData}
                   cx="50%"

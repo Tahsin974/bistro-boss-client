@@ -118,28 +118,36 @@ const CheckOutForm = () => {
     <div>
       <form
         onSubmit={handleSubmit}
-        className="card shadow-lg max-w-lg bg-white mx-auto p-5 "
+        className="card fieldset w-full bg-[#F3F3F3] border border-[#F3F3F3] p-4 rounded-box shadow-lg   "
       >
-        <CardElement
-          className="border-1 p-3"
-          options={{
-            style: {
-              base: {
-                fontSize: "16px",
-                color: "black",
-                "::placeholder": {
-                  color: "#aab7c4",
+        <div className="space-y-2 my-3.5">
+          <h3 className="text-xl font-semibold text-black">Payment Details</h3>
+          <p className="text-gray-400 font-semibold text-base">
+            Complete your order by providing your payment details.
+          </p>
+        </div>
+        <div className="bg-white">
+          <CardElement
+            className=" p-3"
+            options={{
+              style: {
+                base: {
+                  fontSize: "16px",
+                  color: "black",
+                  "::placeholder": {
+                    color: "#aab7c4",
+                  },
+                },
+                invalid: {
+                  color: "#9e2146",
                 },
               },
-              invalid: {
-                color: "#9e2146",
-              },
-            },
-          }}
-        />
+            }}
+          />
+        </div>
         <button
           type="submit"
-          className="btn btn-primary my-7"
+          className="btn btn-neutral text-white my-7"
           disabled={!stripe || !elements || !clientSecret || !cart.length}
         >
           Pay

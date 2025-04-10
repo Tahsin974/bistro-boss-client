@@ -19,6 +19,7 @@ import Payment from "../Pages/DashBoard/Payment/Payment/Payment";
 import PaymentHistory from "../Pages/DashBoard/PaymentHistory/PaymentHistory";
 import AdminHome from "../Pages/DashBoard/Admin-Home/Admin-Home/AdminHome";
 import UserHome from "../Pages/DashBoard/User-Home/User-Home/UserHome";
+import SuccessPayment from "../Pages/DashBoard/SuccessPayment/SuccessPayment";
 const ReactRoutes = () => {
   return (
     <div>
@@ -36,6 +37,7 @@ const ReactRoutes = () => {
           <Route path="cart" element={<Cart />} />
           <Route path="payment" element={<Payment />} />
           <Route path="payment-history" element={<PaymentHistory />} />
+          <Route path="success/:transId" element={<SuccessPayment />} />
 
           {/*Admin Route  */}
           <Route
