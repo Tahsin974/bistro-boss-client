@@ -28,7 +28,7 @@ const FoodItems = () => {
           defaultIndex={initialIndex}
           onSelect={(index) => setTabIndex(index)}
         >
-          <TabList className="flex justify-center gap-4">
+          <TabList className="grid lg:grid-cols-5 justify-items-center grid-cols-3 gap-4">
             {categories.map((category, index) => (
               <Tab
                 key={index}

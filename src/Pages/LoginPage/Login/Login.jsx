@@ -194,16 +194,16 @@ const Login = () => {
                 Or sign in with{" "}
               </div>
               <div className="space-x-4">
-                <button className="btn btn-circle btn-outline text-xl text-black border-black">
+                <button className="btn btn-circle btn-outline bg-white text-xl text-black border-black">
                   <FaFacebookF />
                 </button>
                 <button
                   onClick={handleGoogleSignIn}
-                  className="btn btn-circle btn-outline text-xl text-black border-black"
+                  className="btn btn-circle btn-outline bg-white text-xl text-black border-black"
                 >
                   <FaGoogle />
                 </button>
-                <button className="btn btn-circle btn-outline text-xl text-black border-black">
+                <button className="btn btn-circle btn-outline bg-white text-xl text-black border-black">
                   <FaGithub />
                 </button>
               </div>
